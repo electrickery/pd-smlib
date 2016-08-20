@@ -27,6 +27,7 @@ static void decimator_perform(t_decimator *x, t_float in)
 
 static void decimator_setFactor(t_decimator *x, t_float factor)
 {
+    if (factor < 1) return;
 	x->m_factor=(int)factor - 1;
 }
 
