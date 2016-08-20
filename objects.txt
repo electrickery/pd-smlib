@@ -1,0 +1,38 @@
+lavg        leaky average
+lmax        leaky maximum
+lmin        leaky minimum
+lrange      leaky range
+lstd        leaky standard deviation
+decimator   passes 1 in n input values
+threshold   detection with hysteresis
+hip         first order high-pass filter
+bp          second order (resonant) high-pass filter
+hist        histogram
+lhist       leaky histogram, clips samples
+lhisti      leaky histogram, ignore samples outside bins
+itov        bin index to value (for the histograms
+prevl       previous floats in a list
+deltas      difference between last float and previous floats
+vsum        sum of vector elements
+vcog        center of gravity
+vmax        maximum and its location
+vmin        minimum and its location
+vrms        root mean square
+vstd        standard deviation
+vv+         vector addition
+vv-         vector substraction
+vvconv      vector convolution
+vclip       clip elements
+vfmod       floating point modulo
+vpow        power
+vthreshold  detections with hysteresises
+vftom       frequency to midi
+vmtof       midi to frequency
+vdbtorms    dB to rms
+vrmstodb    rms to dB
+linspace    linearly spaced vector
+vlavg       leaky averages
+vlmax       leaky maxima
+vlmin       leaky minima
+vlrange     leaky ranges
+vdelta      difference between successive vectors
