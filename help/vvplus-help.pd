@@ -1,20 +1,9 @@
-#N canvas 1 53 313 256 10;
-#X obj 40 115 vvplus;
-#X msg 16 81 1 2 3;
-#X msg 73 85 4 5 6;
-#X msg 159 86 1 2 3;
-#X msg 219 86 4;
-#X obj 180 116 vvplus 0;
-#X msg 16 57 1;
-#X msg 159 62 1;
-#X text 18 10 vvplus adds two lists of floats;
-#X text 17 25 or a float to a list of floats;
-#X msg 73 60 3 2 1;
-#X obj 252 159 SMLib-help;
-#X text 230 184 j#|@2002;
-#X obj 40 139 print vvplus;
-#X obj 180 140 print vvplus;
-#N canvas 119 195 494 344 META 0;
+#N canvas 449 85 558 505 10;
+#X obj -1 468 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 310 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#N canvas 716 355 424 317 META 0;
 #X text 12 145 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -25,13 +14,53 @@ Wilkes for Pd version 0.42.;
 #X text 12 85 INLET_1 list float;
 #X text 12 105 OUTLET_0 list float;
 #X text 12 45 DESCRIPTION add two lists of floats;
-#X restore 254 208 pd META;
-#X connect 0 0 13 0;
-#X connect 1 0 0 0;
-#X connect 2 0 0 1;
-#X connect 3 0 5 0;
-#X connect 4 0 5 1;
-#X connect 5 0 14 0;
-#X connect 6 0 0 0;
-#X connect 7 0 5 0;
-#X connect 10 0 0 1;
+#X restore 499 470 pd META;
+#X obj 0 392 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 429 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 118 493 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X obj 4 26 threshold~;
+#X restore 195 471 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty vvplus 3 12 0 18 -204280 -1 0
+;
+#X obj 79 401 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 320 cnv 17 3 30 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 318 float;
+#X text 174 319 - input value;
+#X text 99 336 list;
+#X text 174 337 - list of floats;
+#X obj 79 356 cnv 17 3 30 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 99 354 float;
+#X text 174 355 - input value;
+#X text 99 372 list;
+#X text 174 373 - list of floats;
+#X text 99 403 list;
+#X msg 93 96 1 2 3;
+#X msg 162 100 4 5 6;
+#X msg 233 101 1 2 3;
+#X msg 314 101 4;
+#X msg 93 72 1;
+#X msg 233 77 1;
+#X text 104 447 the default list for the right side inlet;
+#X obj 93 183 smlib/vvplus;
+#X obj 233 184 smlib/vvplus 0;
+#X obj 233 261 print vvplus2;
+#X obj 93 260 print vvplus1;
+#X text 11 23 adds two lists of floats or a float from a list of floats
+, f 71;
+#X obj 496 5 vvplus;
+#X text 174 403 - addition of the two lists;
+#X connect 19 0 26 0;
+#X connect 20 0 26 1;
+#X connect 21 0 27 0;
+#X connect 22 0 27 1;
+#X connect 23 0 26 0;
+#X connect 24 0 27 0;
+#X connect 26 0 29 0;
+#X connect 27 0 28 0;

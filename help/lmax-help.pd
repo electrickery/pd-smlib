@@ -1,20 +1,9 @@
-#N canvas 1 53 441 199 10;
-#X text 345 139 j#|@2002;
-#X obj 367 117 SMLib-help;
-#X floatatom 55 73 5 0 0 0 - - -;
-#X obj 11 56 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X text 55 53 x(i);
-#X floatatom 11 169 5 0 0 0 - - -;
-#X obj 11 99 float;
-#X text 7 22 argument: half-decay time (in number of activations);
-#X msg 119 95 clear;
-#X text 118 77 clear accumulator;
-#X text 8 5 lmax: leaky maximum;
-#X obj 11 139 lmax 10;
-#X msg 244 106 decay 5;
-#X text 243 90 set half-decay time;
-#N canvas 277 199 494 344 META 0;
+#N canvas 453 83 558 505 10;
+#X obj -1 467 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 310 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#N canvas 724 351 424 317 META 0;
 #X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -24,10 +13,118 @@ Wilkes for Pd version 0.42.;
 #X text 12 45 DESCRIPTION leaky maximum;
 #X text 12 65 INLET_0 float clear decay;
 #X text 12 85 OUTLET_0 float;
-#X restore 381 159 pd META;
-#X connect 2 0 6 1;
-#X connect 3 0 6 0;
-#X connect 6 0 11 0;
-#X connect 8 0 11 0;
-#X connect 11 0 5 0;
-#X connect 12 0 11 0;
+#X restore 499 469 pd META;
+#X obj 0 391 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 429 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 124 490 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X obj 4 26 smlib/lhist;
+#X restore 195 470 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty lmax 3 12 0 18 -204280 -1 0;
+#X obj 79 400 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 320 cnv 17 3 50 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 82 448 a) float;
+#X obj 85 103 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 85 59 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X text 99 338 float;
+#X floatatom 112 104 5 0 0 0 - - -, f 5;
+#X floatatom 85 278 5 0 0 0 - - -, f 5;
+#X obj 85 130 float;
+#X msg 175 104 clear;
+#X msg 221 104 decay 5;
+#X obj 182 73 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 85 208 smlib/lmax 10;
+#X text 11 23 leaky maximum, f 71;
+#X obj 510 6 lmax;
+#X text 99 319 clear;
+#X text 174 320 - resets the maximum;
+#N canvas 659 423 450 387 view 0;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-lmax 200 float 5;
+#A 0 0.482965 0.420445 0.366019 0.318638 0.27739 0.241482 0.210223
+0.183009 0.159319 0.138695 0.120741 0.105111 0.0915047 0.0796594 0.0693476
+0.0603706 0.0525556 0.0457523 46.8504 46.8504 46.8504 46.8504 46.8504
+46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504
+46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504
+46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504
+46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504
+46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504
+40.7856 35.506 30.9097 26.9085 23.4252 20.3928 17.753 15.4549 13.4542
+11.7126 10.1964 8.87649 7.72743 6.72712 5.8563 5.8563 5.0982 4.43824
+3.86372 3.36356 2.92815 2.5491 2.21912 1.93186 1.68178 1.46407 1.27455
+1.10956 0.965929 0.84089 0.732037 0.637276 0.554781 0.482965 0.420445
+0.366019 0.318638 0.27739 0.241482 0.210223 0.183009 0.159319 0.138695
+0.120741 0.105111 0.0915047 0.0796594 0.0693476 0.0603706 0.0525556
+0.0457523 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504
+46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504
+46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504
+46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504
+46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 46.8504
+46.8504 46.8504 46.8504 46.8504 46.8504 46.8504 40.7856 35.506 30.9097
+26.9085 23.4252 20.3928 17.753 15.4549 13.4542 11.7126 10.1964 8.87649
+7.72743 6.72712 5.8563 5.0982 4.43824 3.86372 3.36356 2.92815 2.5491
+2.21912 1.93186 1.68178 1.46407 1.27455 1.10956 0.965929 0.84089 0.732037
+0.554781;
+#X coords 0 100 199 0 300 140 1 0 0;
+#X restore 91 193 graph;
+#X obj 91 49 inlet;
+#X obj 91 74 t f b;
+#X obj 118 99 f 0;
+#X obj 144 99 + 1;
+#X msg 199 69 0;
+#X obj 91 154 tabwrite \$0-lmax;
+#X obj 118 124 moses 200;
+#X floatatom 39 106 8 0 0 0 - - -, f 8;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 View;
+#X connect 1 0 2 0;
+#X connect 2 0 6 0;
+#X connect 2 0 8 0;
+#X connect 2 1 3 0;
+#X connect 3 0 4 0;
+#X connect 3 0 6 1;
+#X connect 3 0 7 0;
+#X connect 4 0 3 1;
+#X connect 5 0 3 1;
+#X connect 7 1 5 0;
+#X restore 124 278 pd view;
+#X obj 357 56 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 355 115 * 1;
+#X obj 397 100 hsl 128 15 0 50 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 354 139 5 0 0 0 - - -, f 5;
+#X obj 355 97 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 355 76 metro 5000;
+#X obj 85 80 metro 100;
+#X text 99 357 decay;
+#X text 174 339 - sets the decay value;
+#X text 174 358 - input value;
+#X text 99 402 float;
+#X text 174 402 - output value;
+#X text 174 448 - initial decay value;
+#X connect 10 0 15 0;
+#X connect 11 0 31 0;
+#X connect 13 0 15 1;
+#X connect 15 0 19 0;
+#X connect 16 0 19 0;
+#X connect 17 0 19 0;
+#X connect 18 0 13 0;
+#X connect 19 0 14 0;
+#X connect 19 0 24 0;
+#X connect 25 0 30 0;
+#X connect 26 0 18 0;
+#X connect 26 0 28 0;
+#X connect 27 0 26 1;
+#X connect 29 0 26 0;
+#X connect 30 0 29 0;
+#X connect 31 0 10 0;

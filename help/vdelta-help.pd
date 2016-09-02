@@ -1,22 +1,9 @@
-#N canvas 1 53 433 284 10;
-#X msg 5 30 1 1 1 1 1 1 1 1 1 1;
-#X msg 5 52 1 0 1 0 1 0 1 0 1 0;
-#X msg 5 74 0 1 0 1 0 1 0 1 0 1;
-#X msg 5 96 0 0 0 0 0 0 0 0 0 0;
-#X msg 5 118 -1 -1 0 0 -1 -1 0 0 -1 -1;
-#X msg 5 140 0 0 0 0 0 1 1 1 1 1;
-#X text 352 205 j#|@2002;
-#X obj 373 184 SMLib-help;
-#X text 7 3 vdelta: difference between consecutive vectors;
-#X obj 5 193 print vdelta;
-#X msg 221 31 0;
-#X text 111 162 sending a vector of a different;
-#X text 111 178 length resets its state;
-#X obj 5 170 vdelta;
-#X msg 221 57 0 0 0;
-#X msg 221 79 1 2 3;
-#X msg 221 101 3 2 1;
-#N canvas 248 160 494 344 META 0;
+#N canvas 451 84 558 505 10;
+#X obj -1 496 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 284 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#N canvas 712 357 424 317 META 0;
 #X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -26,15 +13,59 @@ Wilkes for Pd version 0.42.;
 #X text 12 65 INLET_0 list float;
 #X text 12 45 DESCRIPTION difference between consecutive vectors;
 #X text 12 85 OUTLET_0 list float;
-#X restore 374 228 pd META;
-#X connect 0 0 13 0;
-#X connect 1 0 13 0;
-#X connect 2 0 13 0;
-#X connect 3 0 13 0;
-#X connect 4 0 13 0;
-#X connect 5 0 13 0;
-#X connect 10 0 13 0;
-#X connect 13 0 9 0;
-#X connect 14 0 13 0;
-#X connect 15 0 13 0;
-#X connect 16 0 13 0;
+#X restore 499 498 pd META;
+#X obj 0 353 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 434 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 116 494 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 195 499 pd Related_objects;
+#X obj 79 297 cnv 17 3 35 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 295 float;
+#X text 174 296 - input value;
+#X text 99 319 list;
+#X obj 79 368 cnv 17 3 50 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 366 float;
+#X text 99 390 list;
+#X msg 82 51 1 1 1 1 1 1 1 1 1 1;
+#X msg 82 73 1 0 1 0 1 0 1 0 1 0;
+#X msg 82 95 0 1 0 1 0 1 0 1 0 1;
+#X msg 82 117 0 0 0 0 0 0 0 0 0 0;
+#X msg 82 139 -1 -1 0 0 -1 -1 0 0 -1 -1;
+#X msg 82 161 0 0 0 0 0 1 1 1 1 1;
+#X obj 82 255 print vdelta;
+#X msg 298 52 0;
+#X msg 298 78 0 0 0;
+#X msg 298 100 1 2 3;
+#X msg 298 122 3 2 1;
+#X obj 82 211 smlib/vdelta;
+#X text 174 367 - output value = current input value - previous input
+value;
+#X obj 0 462 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 89 477 sending a vector of a different length resets its state
+;
+#X text 174 391 - list of output values. Each output list value = current
+input value - previous input value;
+#X text 174 320 - list of input values (floats);
+#X obj 0 1 cnv 15 552 40 empty empty vdelta 3 12 0 18 -204280 -1 0
+;
+#X text 11 23 vdelta: difference between consecutive vectors, f 71
+;
+#X obj 498 5 vdelta;
+#X connect 13 0 24 0;
+#X connect 14 0 24 0;
+#X connect 15 0 24 0;
+#X connect 16 0 24 0;
+#X connect 17 0 24 0;
+#X connect 18 0 24 0;
+#X connect 20 0 24 0;
+#X connect 21 0 24 0;
+#X connect 22 0 24 0;
+#X connect 23 0 24 0;
+#X connect 24 0 19 0;
+#X coords 0 10100 20 10080 0 0 0;

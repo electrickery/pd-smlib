@@ -1,11 +1,9 @@
-#N canvas 1 53 292 161 10;
-#X text 194 88 j#|@2002;
-#X obj 216 68 SMLib-help;
-#X msg 15 33 100 97 94;
-#X text 10 6 db to rms on a vector;
-#X obj 15 56 vdbtorms;
-#X obj 15 80 print vdbtorms;
-#N canvas 177 154 494 344 META 0;
+#N canvas 451 84 558 505 10;
+#X obj -1 465 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 284 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#N canvas 714 356 424 317 META 0;
 #X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -15,6 +13,35 @@ Wilkes for Pd version 0.42.;
 #X text 12 65 INLET_0 list float;
 #X text 12 85 OUTLET_0 list float;
 #X text 12 45 DESCRIPTION db to rms on a vector;
-#X restore 229 113 pd META;
-#X connect 2 0 4 0;
-#X connect 4 0 5 0;
+#X restore 499 467 pd META;
+#X obj 0 353 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 434 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 116 494 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 195 468 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty vdbtorms 3 12 0 18 -204280 -1
+0;
+#X obj 79 297 cnv 17 3 35 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 295 float;
+#X text 174 296 - input value;
+#X text 99 319 list;
+#X text 174 320 - list of input values;
+#X obj 80 231 print vdbtorms;
+#X obj 80 154 smlib/vdbtorms;
+#X obj 79 368 cnv 17 3 35 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 366 float;
+#X text 99 390 list;
+#X text 174 367 - output value;
+#X text 174 391 - list of output values;
+#X msg 91 81 100 80 60 40 20;
+#X msg 80 58 100 97 94;
+#X text 11 23 db to rms on a vector, f 71;
+#X obj 486 5 vdbtorms;
+#X connect 13 0 12 0;
+#X connect 19 0 13 0;
+#X connect 20 0 13 0;

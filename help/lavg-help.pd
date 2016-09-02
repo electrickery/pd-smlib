@@ -1,33 +1,64 @@
-#N canvas 1 53 441 199 10;
-#X text 351 141 j#|@2002;
-#X obj 373 119 SMLib-help;
-#X floatatom 53 75 5 0 0 0 - - -;
-#X obj 9 58 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1 -1
+#N canvas 455 82 558 505 10;
+#X obj -1 468 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 290 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#X text 53 55 x(i);
-#X text 6 7 lavg: leaky average;
-#X obj 9 141 lavg 10;
-#X floatatom 9 171 5 0 0 0 - - -;
-#X obj 9 101 float;
-#X text 5 24 argument: half-decay time (in number of activations);
-#X msg 118 101 clear;
-#X text 116 79 clear accumulator;
-#X msg 244 106 decay 5;
-#X text 243 90 set half-decay time;
-#N canvas 290 208 494 344 META 0;
-#X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#N canvas 732 347 424 317 META 0;
+#X text 12 175 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 105 AUTHOR Johannes Taelman (johannes.taelman@rug.ac.be)
+#X text 12 155 AUTHOR Johannes Taelman (johannes.taelman@rug.ac.be)
 ;
+#X text 12 45 DESCRIPTION binary index to value;
 #X text 12 5 KEYWORDS control;
-#X text 12 45 DESCRIPTION leaky average;
-#X text 12 65 INLET_0 float clear decay;
-#X text 12 85 OUTLET_0 float;
-#X restore 385 161 pd META;
-#X connect 2 0 8 1;
-#X connect 3 0 8 0;
-#X connect 6 0 7 0;
-#X connect 8 0 6 0;
-#X connect 10 0 6 0;
-#X connect 12 0 6 0;
+#X text 12 75 INLET_0 float absolute clear;
+#X text 12 95 OUTLET_0 float;
+#X text 12 115 OUTLET_1 float;
+#X text 12 135 OUTLET_2 float;
+#X restore 499 470 pd META;
+#X obj 0 360 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 407 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 130 487 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 195 471 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty lavg 3 12 0 18 -204280 -1 0;
+#X obj 79 369 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 300 cnv 17 3 50 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 82 428 a) float;
+#X text 174 300 - input float;
+#X text 99 299 float;
+#X text 99 371 float;
+#X floatatom 108 106 5 0 0 0 - - -, f 5;
+#X obj 81 105 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X floatatom 81 241 8 0 0 0 - - -, f 8;
+#X obj 81 127 float;
+#X msg 198 128 clear;
+#X obj 81 188 smlib/lavg 10;
+#X obj 81 83 metro 500;
+#X obj 81 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X text 11 23 leaky average, f 71;
+#X obj 505 6 lavg;
+#X text 174 371 - averaged value;
+#X text 99 317 clear;
+#X text 174 318 - clear accumulator;
+#X text 98 336 set d;
+#X text 174 337 - set half-decay time;
+#X text 174 428 - default half-decay times;
+#X msg 197 106 decay \$1;
+#X floatatom 197 84 5 0 0 0 - - -, f 5;
+#X connect 13 0 16 1;
+#X connect 14 0 16 0;
+#X connect 16 0 18 0;
+#X connect 17 0 18 0;
+#X connect 18 0 15 0;
+#X connect 19 0 14 0;
+#X connect 20 0 19 0;
+#X connect 29 0 18 0;
+#X connect 30 0 29 0;

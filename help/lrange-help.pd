@@ -1,20 +1,9 @@
-#N canvas 1 53 441 199 10;
-#X text 351 133 j#|@2002;
-#X obj 373 111 SMLib-help;
-#X floatatom 54 72 5 0 0 0 - - -;
-#X obj 10 55 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X text 54 52 x(i);
-#X floatatom 10 168 5 0 0 0 - - -;
-#X obj 10 98 float;
-#X text 6 21 argument: half-decay time (in number of activations);
-#X msg 119 98 clear;
-#X text 117 76 clear accumulator;
-#X text 7 4 lrange: leaky maximum minus leaky minimum;
-#X obj 10 138 lrange 10;
-#X msg 244 106 decay 5;
-#X text 243 90 set half-decay time;
-#N canvas 224 251 494 344 META 0;
+#N canvas 453 83 558 505 10;
+#X obj -1 468 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 308 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#N canvas 720 353 424 317 META 0;
 #X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -24,10 +13,119 @@ Wilkes for Pd version 0.42.;
 ;
 #X text 12 45 DESCRIPTION leaky maximum minus leaky minimum;
 #X text 12 65 INLET_0 float clear decay;
-#X restore 391 156 pd META;
-#X connect 2 0 6 1;
+#X restore 499 470 pd META;
+#X obj 0 384 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 422 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 124 490 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X obj 4 26 smlib/lhist;
+#X restore 195 471 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty lrange 3 12 0 18 -204280 -1 0
+;
+#X obj 79 393 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 318 cnv 17 3 50 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 82 441 a) float;
+#X obj 85 103 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 85 59 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X floatatom 112 104 5 0 0 0 - - -, f 5;
+#X floatatom 85 275 5 0 0 0 - - -, f 5;
+#X obj 85 130 float;
+#X msg 175 104 clear;
+#X msg 221 104 decay 5;
+#X obj 182 73 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 99 317 clear;
+#N canvas 651 427 450 387 view 0;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-lrange 200 float 5;
+#A 0 6.05315 5.64779 5.26957 4.91669 4.91669 4.58743 4.28022 3.99359
+3.72615 3.47662 3.2438 3.02658 2.82389 2.63479 2.45834 2.29372 2.14011
+1.9968 1.86308 1.73831 1.6219 1.51329 45.1823 42.1566 39.3335 36.6994
+34.2418 31.9487 29.8092 27.813 25.9504 24.2126 22.5911 21.0783 19.6667
+18.3497 17.1209 15.9743 14.9046 13.9065 12.9752 12.1063 11.2956 10.5391
+9.83337 9.17486 8.56045 7.98719 7.45231 6.95325 6.48761 6.05316 5.6478
+5.26958 4.91669 4.58744 4.28024 3.9936 3.72617 3.47664 3.24382 3.02659
+2.82391 2.63481 2.45836 2.29374 2.14013 1.99681 1.86309 1.73833 1.62192
+1.51331 45.1823 42.1566 39.3335 36.6994 34.2418 31.9487 29.8092 27.813
+25.9504 24.2126 22.5912 21.0783 19.6667 18.3497 17.1209 15.9744 14.9046
+13.9065 12.9752 12.1063 11.2956 10.5391 9.83337 9.17486 8.56045 7.98718
+7.4523 6.95324 6.48761 6.05315 5.64779 5.26957 4.91669 4.58743 4.28022
+3.99359 3.72615 3.47662 3.2438 3.02658 2.82389 2.63479 2.45834 2.29372
+2.14011 1.9968 1.86308 1.73831 1.6219 1.51329 45.1823 42.1566 39.3335
+36.6994 34.2418 31.9487 29.8092 27.813 25.9504 24.2126 22.5911 21.0783
+19.6667 18.3497 17.1209 15.9743 14.9046 13.9065 12.9752 12.1063 11.2956
+10.5391 9.83337 9.17486 8.56045 7.98719 7.45231 6.95325 6.48761 6.05316
+5.6478 5.26958 4.91669 4.58744 4.28024 3.9936 3.72617 3.47664 3.24382
+3.02659 2.82391 2.63481 2.45836 2.29374 2.14013 1.99681 1.86309 1.73833
+1.62192 1.51331 45.1823 42.1566 39.3335 36.6994 34.2418 31.9487 29.8092
+27.813 25.9504 24.2126 22.5912 21.0783 19.6667 18.3497 17.1209 15.9744
+14.9046 13.9065 12.9752 12.1063 11.2956 10.5391 9.83337 9.17486 8.56045
+7.98718 7.4523 6.48761;
+#X coords 0 100 199 0 300 140 1 0 0;
+#X restore 91 193 graph;
+#X obj 91 38 inlet;
+#X obj 91 63 t f b;
+#X obj 118 88 f 0;
+#X obj 144 88 + 1;
+#X msg 199 58 0;
+#X obj 118 113 moses 200;
+#X floatatom 39 95 8 0 0 0 - - -, f 8;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 View;
+#X obj 91 154 tabwrite \$0-lrange;
+#X connect 1 0 2 0;
+#X connect 2 0 7 0;
+#X connect 2 0 10 0;
+#X connect 2 1 3 0;
+#X connect 3 0 4 0;
 #X connect 3 0 6 0;
-#X connect 6 0 11 0;
-#X connect 8 0 11 0;
-#X connect 11 0 5 0;
-#X connect 12 0 11 0;
+#X connect 3 0 10 1;
+#X connect 4 0 3 1;
+#X connect 5 0 3 1;
+#X connect 6 1 5 0;
+#X restore 124 275 pd view;
+#X obj 357 56 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 355 115 * 1;
+#X obj 397 100 hsl 128 15 0 50 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12300 1;
+#X floatatom 354 139 5 0 0 0 - - -, f 5;
+#X obj 355 97 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 355 76 metro 5000;
+#X obj 85 80 metro 100;
+#X text 99 395 float;
+#X text 99 355 float;
+#X text 99 336 decay;
+#X text 174 395 - output value;
+#X text 173 356 - input value;
+#X obj 85 208 smlib/lrange 10;
+#X obj 500 6 lrange;
+#X text 11 23 leaky maximum minus leaky minimum, f 71;
+#X text 174 318 - clear accumulator;
+#X text 174 337 - sets the half-decay time;
+#X text 174 441 - initial half-decay value (in number of activations)
+;
+#X connect 10 0 14 0;
+#X connect 11 0 26 0;
+#X connect 12 0 14 1;
+#X connect 14 0 32 0;
+#X connect 15 0 32 0;
+#X connect 16 0 32 0;
+#X connect 17 0 12 0;
+#X connect 20 0 25 0;
+#X connect 21 0 17 0;
+#X connect 21 0 23 0;
+#X connect 22 0 21 1;
+#X connect 24 0 21 0;
+#X connect 25 0 24 0;
+#X connect 26 0 10 0;
+#X connect 32 0 13 0;
+#X connect 32 0 19 0;

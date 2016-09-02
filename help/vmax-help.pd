@@ -1,18 +1,9 @@
-#N canvas 1 53 473 182 10;
-#X floatatom 35 104 5 0 0 0 - - -;
-#X text 387 99 j#|@2002;
-#X obj 409 77 SMLib-help;
-#X msg 133 47 0;
-#X msg 168 47 0 1 0 1;
-#X msg 243 48 0 0 1 1;
-#X text 14 3 vcog computes maximum of a list of floats;
-#X obj 49 76 vmax;
-#X floatatom 86 104 5 0 0 0 - - -;
-#X msg 15 47 1 2 3 1;
-#X msg 81 47 3 4 1;
-#X text 13 21 and the location of the first occurance of the maximum
+#N canvas 449 85 558 505 10;
+#X obj -1 469 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 299 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#N canvas 122 150 494 344 META 0;
+#N canvas 698 364 424 317 META 0;
 #X text 12 145 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -23,11 +14,47 @@ Wilkes for Pd version 0.42.;
 #X text 12 45 DESCRIPTION maximum of a list of floats;
 #X text 12 85 OUTLET_0 float;
 #X text 12 105 OUTLET_1 float;
-#X restore 411 130 pd META;
-#X connect 3 0 7 0;
-#X connect 4 0 7 0;
-#X connect 5 0 7 0;
-#X connect 7 0 0 0;
-#X connect 7 1 8 0;
-#X connect 9 0 7 0;
-#X connect 10 0 7 0;
+#X restore 499 471 pd META;
+#X obj 0 357 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 429 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 116 494 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 195 472 pd Related_objects;
+#X obj 79 312 cnv 17 3 35 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 311 float;
+#X text 99 330 list;
+#X obj 79 369 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 367 float;
+#X obj 0 1 cnv 15 552 40 empty empty vmax 3 12 0 18 -204280 -1 0;
+#X text 174 312 - input value;
+#X text 174 331 - list of input values;
+#X floatatom 76 263 5 0 0 0 - - -, f 5;
+#X msg 194 58 0;
+#X msg 229 58 0 1 0 1;
+#X msg 304 59 0 0 1 1;
+#X floatatom 133 263 5 0 0 0 - - -, f 5;
+#X msg 76 58 1 2 3 1;
+#X msg 142 58 3 4 1;
+#X obj 76 181 smlib/vmax;
+#X obj 504 6 vmax;
+#X text 11 23 finds the maximum and its location in the list, f 76
+;
+#X obj 79 399 cnv 17 3 25 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 99 397 float;
+#X text 174 368 - the maximum value in the list;
+#X text 174 398 - the location in the list where maximum first occurrs
+(1 based);
+#X connect 15 0 21 0;
+#X connect 16 0 21 0;
+#X connect 17 0 21 0;
+#X connect 19 0 21 0;
+#X connect 20 0 21 0;
+#X connect 21 0 14 0;
+#X connect 21 1 18 0;
+#X coords 0 10100 20 10080 0 0 0;

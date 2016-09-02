@@ -1,8 +1,9 @@
-#N canvas 1 53 452 302 10;
-#X obj 106 129 vabs;
-#X msg 106 95 1 2 3 -4 -5 -6;
-#X obj 106 165 print;
-#N canvas 222 207 494 344 META 0;
+#N canvas 451 84 558 505 10;
+#X obj -1 468 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 301 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#N canvas 722 352 424 317 META 0;
 #X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -12,8 +13,35 @@ Wilkes for Pd version 0.42.;
 #X text 12 65 INLET_0 list float;
 #X text 12 85 OUTLET_0 float list;
 #X text 12 45 DESCRIPTION absolute value for lists;
-#X restore 389 244 pd META;
-#X text 351 213 j#|@2002;
-#X obj 373 193 SMLib-help;
-#X connect 0 0 2 0;
-#X connect 1 0 0 0;
+#X restore 499 470 pd META;
+#X obj 0 366 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 428 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 120 492 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X obj 4 26 threshold~;
+#X restore 195 471 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty vabs 3 12 0 18 -204280 -1 0;
+#X obj 79 311 cnv 17 3 35 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 309 float;
+#X text 174 310 - input value;
+#X msg 106 68 1 2 3 -4 -5 -6;
+#X obj 106 235 print;
+#X obj 106 169 smlib/vabs;
+#X text 11 23 absolute values of a list of floats, f 71;
+#X obj 508 5 vabs;
+#X msg 118 94 -42;
+#X text 99 333 list;
+#X text 174 334 - list of input values;
+#X obj 79 380 cnv 17 3 35 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 378 float;
+#X text 99 402 list;
+#X text 174 379 - output value;
+#X text 174 403 - list of output values;
+#X connect 10 0 12 0;
+#X connect 12 0 11 0;
+#X connect 15 0 12 0;

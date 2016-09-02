@@ -1,26 +1,9 @@
-#N canvas 1 53 430 286 10;
-#X floatatom 12 141 5 0 0 0 - - -;
-#X obj 12 118 float;
-#X obj 12 95 metro 100;
-#X obj 12 54 loadbang;
-#X obj 12 78 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 1 1
+#N canvas 393 80 558 505 10;
+#X obj 0 456 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 275 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#X obj 124 77 hsl 128 15 -127 127 0 0 empty empty empty -2 -6 0 8 -262144
--1 -1 0 1;
-#X text 338 214 j#|@2002;
-#X obj 356 192 SMLib-help;
-#X floatatom 138 133 0 0 0 0 - - -;
-#X msg 106 110 clear;
-#X text 156 109 <-- reinitialize internal state;
-#X obj 21 211 hsl 128 15 -256 256 0 0 empty empty empty -2 -6 0 8 -262144
--1 -1 6350 1;
-#X floatatom 17 237 5 0 0 0 - - -;
-#X text 262 76 <-- swing!;
-#X text 13 7 hip: highpass filter on float stream;
-#X text 11 25 the non-audio version of hip~;
-#X obj 19 182 hip 0.05;
-#X text 170 134 <-- cutoff frequency;
-#N canvas 344 185 494 344 META 0;
+#N canvas 740 343 424 317 META 0;
 #X text 12 155 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -31,14 +14,98 @@ Wilkes for Pd version 0.42.;
 #X text 12 45 DESCRIPTION highpass filter on float stream;
 #X text 12 75 INLET_0 float clear;
 #X text 12 115 OUTLET_0 float;
-#X restore 367 237 pd META;
-#X connect 1 0 0 0;
-#X connect 1 0 16 0;
-#X connect 2 0 1 0;
-#X connect 3 0 4 0;
-#X connect 4 0 2 0;
-#X connect 5 0 1 1;
-#X connect 8 0 16 1;
-#X connect 9 0 16 0;
-#X connect 11 0 12 0;
-#X connect 16 0 11 0;
+#X restore 500 458 pd META;
+#X obj 0 358 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 395 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 132 486 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X obj 9 29 bp~;
+#X restore 196 459 pd Related_objects;
+#X obj 79 327 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 0 cnv 15 552 40 empty empty hip 3 12 0 18 -204280 -1 0;
+#X text 99 369 float;
+#X text 82 420 1) float;
+#X obj 79 367 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 326 float;
+#X obj 79 285 cnv 17 3 35 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X floatatom 92 155 5 0 0 0 - - -, f 5;
+#X obj 86 132 float;
+#X obj 86 110 metro 100;
+#X obj 86 90 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 1 1
+;
+#X msg 41 90 clear;
+#X floatatom 272 158 8 0 0 0 - - -, f 8;
+#X obj 339 117 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 275 136 hsl 192 15 -63 127 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 3213 1;
+#X text 99 283 clear;
+#X text 174 285 - reinitialize internal state;
+#X text 99 302 float;
+#X text 174 303 - input value;
+#X text 174 369 - filtered value;
+#X obj 271 44 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 1 1
+;
+#X obj 271 82 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 271 100 * 50;
+#X obj 271 62 metro 5000;
+#X obj 86 68 loadbang;
+#X obj 340 179 hsl 128 15 0 0.5 0 0 empty empty cutoff_frequency 0
+7 0 12 -262144 -1 -1 100 1;
+#X floatatom 337 201 5 0 0 0 - - -, f 5;
+#X text 337 100 set value:;
+#N canvas 988 405 450 300 view 0;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-hip 200 float 4;
+#X coords 0 50 199 -30 300 140 1 0 0;
+#X restore 100 139 graph;
+#X obj 100 20 inlet;
+#X obj 127 70 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 100 44 t f b;
+#X obj 181 44 f;
+#X obj 208 44 + 1;
+#X msg 217 16 0;
+#X obj 181 70 t f f;
+#X obj 208 93 moses 200;
+#X obj 100 94 tabwrite \$0-hip;
+#X connect 1 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 9 0;
+#X connect 3 1 2 0;
+#X connect 4 0 5 0;
+#X connect 4 0 7 0;
+#X connect 5 0 4 1;
+#X connect 6 0 4 1;
+#X connect 7 0 9 1;
+#X connect 7 1 8 0;
+#X connect 8 1 6 0;
+#X restore 257 176 pd view;
+#X obj 86 247 smlib/hip 0.05;
+#X obj 509 6 hip;
+#X text 174 323 - cutoff frequency;
+#X text 174 420 - set initial value for coutoff frequency;
+#X text 11 21 highpass filter on float stream;
+#X connect 14 0 13 0;
+#X connect 14 0 35 0;
+#X connect 15 0 14 0;
+#X connect 16 0 15 0;
+#X connect 17 0 35 0;
+#X connect 19 0 14 1;
+#X connect 20 0 18 0;
+#X connect 20 0 34 0;
+#X connect 26 0 29 0;
+#X connect 27 0 28 0;
+#X connect 28 0 19 0;
+#X connect 29 0 27 0;
+#X connect 30 0 16 0;
+#X connect 31 0 32 0;
+#X connect 31 0 35 1;
+#X connect 35 0 20 0;

@@ -1,42 +1,71 @@
-#N canvas 31 108 466 316 10;
-#N canvas 0 22 450 300 (subpatch) 0;
-#X array array_vlmax 10 float 0;
-#X coords 0 1 9 -1 200 140 1;
-#X restore 239 72 graph;
-#X msg 8 58 1 1 1 1 1 1 1 1 1 1;
-#X msg 8 80 1 0 1 0 1 0 1 0 1 0;
-#X msg 8 102 0 1 0 1 0 1 0 1 0 1;
-#X msg 8 124 0 0 0 0 0 0 0 0 0 0;
-#X msg 8 146 -1 -1 0 0 -1 -1 0 0 -1 -1;
-#X msg 8 168 0 0 0 0 0 1 1 1 1 1;
-#X text 376 255 j#|@2002;
-#X text 8 22 the argument is the half-decay expressed in number of
-activations;
-#X obj 397 234 SMLib-help;
-#X obj 8 224 vlmax 6;
-#X obj 8 295 s array_vlmax;
-#X msg 27 201 decay 20;
-#X text 9 4 vlmax: vector leaky maximum;
-#N canvas 243 181 494 344 META 0;
-#X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#N canvas 447 86 558 505 10;
+#X obj -1 493 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 313 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#N canvas 692 367 424 317 META 0;
+#X text 12 145 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 105 AUTHOR Johannes Taelman (johannes.taelman@rug.ac.be)
+#X text 12 125 AUTHOR Johannes Taelman (johannes.taelman@rug.ac.be)
 ;
-#X text 12 45 DESCRIPTION vector leaky maximum;
+#X text 12 65 INLET_0 list float;
 #X text 12 5 KEYWORDS control list_op;
-#X text 12 65 INLET_0 float list decay;
-#X text 12 85 OUTLET_0 list float;
-#X restore 406 278 pd META;
-#X obj 8 249 list prepend 0;
-#X obj 8 273 list trim;
-#X connect 1 0 10 0;
-#X connect 2 0 10 0;
-#X connect 3 0 10 0;
-#X connect 4 0 10 0;
-#X connect 5 0 10 0;
-#X connect 6 0 10 0;
-#X connect 10 0 15 0;
-#X connect 12 0 10 0;
-#X connect 15 0 16 0;
-#X connect 16 0 11 0;
+#X text 12 85 OUTLET_0 float;
+#X text 12 105 OUTLET_1 float;
+#X text 12 45 DESCRIPTION maximum of a list of floats;
+#X restore 499 495 pd META;
+#X obj 0 393 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 453 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 116 494 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 195 496 pd Related_objects;
+#X obj 79 326 cnv 17 3 50 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 345 float;
+#X text 99 363 list;
+#X obj 79 405 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 403 float;
+#X obj 0 1 cnv 15 552 40 empty empty vlmax 3 12 0 18 -204280 -1 0;
+#X text 174 346 - input value;
+#X text 174 364 - list of input values;
+#N canvas 1 79 450 300 (subpatch) 0;
+#X array \$0_vlmax 10 float 0;
+#X coords 0 1 9 -1 200 140 1;
+#X restore 319 58 graph;
+#X msg 88 44 1 1 1 1 1 1 1 1 1 1;
+#X msg 88 63 1 0 1 0 1 0 1 0 1 0;
+#X msg 88 82 0 1 0 1 0 1 0 1 0 1;
+#X msg 88 101 0 0 0 0 0 0 0 0 0 0;
+#X msg 88 120 -1 -1 0 0 -1 -1 0 0 -1 -1;
+#X msg 88 139 0 0 0 0 0 1 1 1 1 1;
+#X msg 174 161 decay 20;
+#X obj 88 272 list trim;
+#X obj 88 253 list prepend 0;
+#X text 99 324 decay n;
+#X text 174 326 - the half-decay expressed in number of activations
+;
+#X text 90 468 the default half-decay expressed in number of activations
+;
+#X text 99 422 list;
+#X text 174 423 - list of input values;
+#X text 11 23 vector leaky maximum, f 76;
+#X obj 507 6 vlmax;
+#X obj 88 210 smlib/vlmax 6;
+#X text 174 404 - the maximum value in the list;
+#X obj 88 291 s \$0_vlmax;
+#X connect 15 0 31 0;
+#X connect 16 0 31 0;
+#X connect 17 0 31 0;
+#X connect 18 0 31 0;
+#X connect 19 0 31 0;
+#X connect 20 0 31 0;
+#X connect 21 0 31 0;
+#X connect 22 0 33 0;
+#X connect 23 0 22 0;
+#X connect 31 0 23 0;
+#X coords 0 10100 20 10080 0 0 0;

@@ -1,19 +1,9 @@
-#N canvas 1 53 326 251 10;
-#X msg 25 90 1 2 3;
-#X msg 82 94 4 5 6;
-#X msg 168 95 1 2 3;
-#X msg 228 95 4;
-#X msg 25 66 1;
-#X msg 168 71 1;
-#X text 248 191 j#|@2002;
-#X text 18 10 vvminus substracts two lists of floats;
-#X text 18 26 or a float from a list of floats;
-#X obj 49 124 vvminus;
-#X obj 189 125 vvminus 0;
-#X obj 268 170 SMLib-help;
-#X obj 49 148 print vvminus;
-#X obj 189 149 print vvminus;
-#N canvas 102 157 494 344 META 0;
+#N canvas 449 85 558 505 10;
+#X obj -1 468 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 310 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#N canvas 718 354 424 317 META 0;
 #X text 12 145 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -24,12 +14,54 @@ Wilkes for Pd version 0.42.;
 #X text 12 85 INLET_1 list float;
 #X text 12 105 OUTLET_0 list float;
 #X text 12 45 DESCRIPTION substracts two lists of floats;
-#X restore 267 216 pd META;
-#X connect 0 0 9 0;
-#X connect 1 0 9 1;
-#X connect 2 0 10 0;
-#X connect 3 0 10 1;
-#X connect 4 0 9 0;
-#X connect 5 0 10 0;
-#X connect 9 0 12 0;
-#X connect 10 0 13 0;
+#X restore 499 470 pd META;
+#X obj 0 392 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 429 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 118 493 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X obj 4 26 threshold~;
+#X restore 195 471 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty vvminus 3 12 0 18 -204280 -1 0
+;
+#X obj 79 401 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 320 cnv 17 3 30 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 318 float;
+#X text 174 319 - input value;
+#X text 99 336 list;
+#X text 174 337 - list of floats;
+#X obj 79 356 cnv 17 3 30 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 99 354 float;
+#X text 174 355 - input value;
+#X text 99 372 list;
+#X text 174 373 - list of floats;
+#X text 99 403 list;
+#X msg 93 96 1 2 3;
+#X msg 168 100 4 5 6;
+#X msg 233 101 1 2 3;
+#X msg 320 101 4;
+#X msg 93 72 1;
+#X msg 233 77 1;
+#X obj 93 183 smlib/vvminus;
+#X obj 233 184 smlib/vvminus 0;
+#X obj 233 261 print vvminus2;
+#X obj 93 260 print vvminus1;
+#X text 11 23 substracts two lists of floats or a float from a list
+of floats, f 71;
+#X text 104 447 the default list for the right side inlet;
+#X text 174 403 - subtraction of the right side list from the left
+side list;
+#X obj 496 5 vvminus;
+#X connect 19 0 25 0;
+#X connect 20 0 25 1;
+#X connect 21 0 26 0;
+#X connect 22 0 26 1;
+#X connect 23 0 25 0;
+#X connect 24 0 26 0;
+#X connect 25 0 28 0;
+#X connect 26 0 27 0;

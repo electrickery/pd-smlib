@@ -1,20 +1,52 @@
-#N canvas 1 53 283 157 10;
-#X text 194 88 j#|@2002;
-#X obj 216 68 SMLib-help;
-#X text 10 6 frequency to midi on a vector;
-#X obj 15 56 vrmstodb;
-#X msg 15 33 100 97 94;
-#X obj 15 80 print vrmstodb;
-#N canvas 143 169 494 344 META 0;
+#N canvas 449 85 558 505 10;
+#X obj -1 465 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 298 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#N canvas 712 357 424 317 META 0;
 #X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 105 AUTHOR Johannes Taelman (johannes.taelman@rug.ac.be)
 ;
+#X text 12 5 KEYWORDS control list_op;
 #X text 12 65 INLET_0 list float;
-#X text 12 85 OUTLET_0 float list;
-#X text 12 5 KEYWORDS control list_op MIDI conversion;
-#X text 12 45 DESCRIPTION frequency to midi on a vector;
-#X restore 216 114 pd META;
-#X connect 3 0 5 0;
-#X connect 4 0 3 0;
+#X text 12 85 OUTLET_0 list float;
+#X text 12 45 DESCRIPTION rms to db on a vector;
+#X restore 499 467 pd META;
+#X obj 0 367 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 434 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 116 494 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 195 468 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty vdrmstodb 3 12 0 18 -204280 -1
+0;
+#X obj 79 311 cnv 17 3 35 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 309 float;
+#X text 174 310 - input value;
+#X text 99 333 list;
+#X text 174 334 - list of input values;
+#X obj 82 259 print vdbtorms;
+#X obj 79 382 cnv 17 3 35 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 380 float;
+#X text 99 400 list;
+#X obj 82 182 smlib/vrmstodb;
+#X msg 91 79 1 3.1625 10 31.625;
+#X floatatom 201 101 5 0 0 0 - - -, f 5;
+#X msg 82 59 0.001 0.01 0.1 1 10 100;
+#X msg 100 100 0.00125895;
+#X text 174 381 - output value = 100 + 20./LOGTEN * log(f);
+#X text 174 399 - list of output values \, each the rms to db of the
+input value;
+#X text 11 23 rms to db on a vector, f 71;
+#X obj 486 5 vrmstodb;
+#X connect 16 0 12 0;
+#X connect 17 0 16 0;
+#X connect 18 0 16 0;
+#X connect 19 0 16 0;
+#X connect 20 0 16 0;

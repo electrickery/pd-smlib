@@ -1,28 +1,9 @@
-#N canvas 1 53 428 284 10;
-#X floatatom 12 151 5 0 0 0 - - -;
-#X obj 12 128 float;
-#X obj 12 95 metro 100;
-#X obj 12 54 loadbang;
-#X obj 12 78 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 1 1
+#N canvas 395 79 558 505 10;
+#X obj 0 478 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 275 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#X obj 124 77 hsl 128 15 -127 127 0 0 empty empty empty -2 -6 0 8 -262144
--1 -1 0 1;
-#X text 349 215 j#|@2002;
-#X obj 367 193 SMLib-help;
-#X text 13 7 bp: bandpass filter on float stream;
-#X floatatom 138 133 0 0 0 0 - - -;
-#X msg 106 110 clear;
-#X text 156 109 <-- reinitialize internal state;
-#X text 170 134 <-- center frequency;
-#X floatatom 187 155 0 0 0 0 - - -;
-#X text 219 156 <-- Q;
-#X obj 22 221 hsl 128 15 -256 256 0 0 empty empty empty -2 -6 0 8 -262144
--1 -1 6350 1;
-#X floatatom 19 247 5 0 0 0 - - -;
-#X text 11 25 the non-audio version of bp~;
-#X text 262 76 <-- swing!;
-#X obj 19 192 bp 0.07 5;
-#N canvas 221 263 494 344 META 0;
+#N canvas 375 298 424 317 META 0;
 #X text 12 165 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -34,15 +15,107 @@ Wilkes for Pd version 0.42.;
 #X text 12 125 OUTLET_0 float;
 #X text 12 145 AUTHOR Johannes Taelman (johannes.taelman@rug.ac.be)
 ;
-#X restore 373 245 pd META;
-#X connect 1 0 0 0;
-#X connect 1 0 19 0;
-#X connect 2 0 1 0;
-#X connect 3 0 4 0;
+#X restore 500 480 pd META;
+#X obj 0 380 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 417 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 132 486 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X obj 9 29 bp~;
+#X restore 196 481 pd Related_objects;
+#X obj 79 327 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X obj 0 0 cnv 15 552 40 empty empty bp 3 12 0 18 -204280 -1 0;
+#X text 99 391 float;
+#X text 82 442 1) float;
+#X obj 79 389 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 349 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 99 326 float;
+#X text 99 348 float;
+#X obj 79 285 cnv 17 3 35 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 11 21 bandpass filter on float stream;
+#X obj 509 6 bp;
+#X floatatom 92 155 5 0 0 0 - - -, f 5;
+#X obj 86 132 float;
+#X obj 86 110 metro 100;
+#X obj 86 90 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 1 1
+;
+#X msg 41 90 clear;
+#X floatatom 272 158 8 0 0 0 - - -, f 8;
+#X obj 86 247 smlib/bp 0.07 5;
+#X obj 339 117 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 275 136 hsl 192 15 -63 127 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 6333 1;
+#X text 174 323 - center frequency;
+#X text 99 283 clear;
+#X text 174 285 - reinitialize internal state;
+#X text 99 302 float;
+#X text 174 303 - input value;
+#X text 174 347 - Q-factor;
+#X text 174 391 - filtered value;
+#X obj 271 44 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 1 1
+;
+#X obj 271 82 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 271 100 * 50;
+#X obj 271 62 metro 5000;
+#X obj 86 68 loadbang;
+#X text 174 442 - set initial values for center frequency and Q;
+#X obj 340 179 hsl 128 15 0 0.5 0 0 empty empty center_frequency 0
+7 0 12 -262144 -1 -1 5300 1;
+#X floatatom 337 201 5 0 0 0 - - -, f 5;
+#X obj 340 225 hsl 128 15 0 5 0 0 empty empty Q_factor 2 7 0 12 -262144
+-1 -1 10300 1;
+#X floatatom 337 247 5 0 0 0 - - -, f 5;
+#X text 337 100 set value:;
+#N canvas 994 402 450 300 view 0;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-bp 200 float 4;
+#X coords 0 50 199 -30 300 140 1 0 0;
+#X restore 100 139 graph;
+#X obj 100 20 inlet;
+#X obj 100 94 tabwrite \$0-bp;
+#X obj 127 70 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 100 44 t f b;
+#X obj 181 44 f;
+#X obj 208 44 + 1;
+#X msg 217 16 0;
+#X obj 181 70 t f f;
+#X obj 208 93 moses 200;
+#X connect 1 0 4 0;
+#X connect 3 0 5 0;
 #X connect 4 0 2 0;
-#X connect 5 0 1 1;
-#X connect 9 0 19 1;
-#X connect 10 0 19 0;
-#X connect 13 0 19 2;
-#X connect 15 0 16 0;
-#X connect 19 0 15 0;
+#X connect 4 1 3 0;
+#X connect 5 0 6 0;
+#X connect 5 0 8 0;
+#X connect 6 0 5 1;
+#X connect 7 0 5 1;
+#X connect 8 0 2 1;
+#X connect 8 1 9 0;
+#X connect 9 1 7 0;
+#X restore 257 176 pd view;
+#X connect 18 0 17 0;
+#X connect 18 0 23 0;
+#X connect 19 0 18 0;
+#X connect 20 0 19 0;
+#X connect 21 0 23 0;
+#X connect 23 0 25 0;
+#X connect 24 0 18 1;
+#X connect 25 0 22 0;
+#X connect 25 0 44 0;
+#X connect 33 0 36 0;
+#X connect 34 0 35 0;
+#X connect 35 0 24 0;
+#X connect 36 0 34 0;
+#X connect 37 0 20 0;
+#X connect 39 0 40 0;
+#X connect 39 0 23 1;
+#X connect 41 0 42 0;
+#X connect 41 0 23 2;

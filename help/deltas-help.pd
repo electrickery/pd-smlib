@@ -1,30 +1,9 @@
-#N canvas 1 53 489 293 10;
-#X text 390 239 j#|@2002;
-#X obj 412 217 SMLib-help;
-#X floatatom 14 74 5 0 0 0 - - -;
-#X obj 12 165 print deltas;
-#X floatatom 68 108 5 0 0 0 - - -;
-#X floatatom 120 107 5 0 0 0 - - -;
-#X obj 24 104 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 12 138 deltas 1 10 10;
-#X obj 14 54 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X text 9 4 deltas: generates vector with differences between last
-input and past inputs;
-#X text 9 186 x(i)-x(i-a);
-#X text 9 200 x(i)-x(i-(a+1));
-#X text 9 214 x(i)-x(i-(a+2));
-#X text 9 240 x(i)-x(i-(b));
-#X text 7 225 ...;
-#X text 153 137 [deltas a b c];
-#X text 120 86 b;
-#X text 66 87 a;
-#X text 152 183 requires a<b and b<=c;
-#X text 152 167 c = buffer size;
-#X text 35 50 x(i);
-#X msg 79 57 clear;
-#N canvas 101 197 494 344 META 0;
+#N canvas 461 79 558 505 10;
+#X obj -1 562 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 261 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#N canvas 736 345 424 317 META 0;
 #X text 12 175 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -37,12 +16,114 @@ last input and past inputs;
 #X text 12 95 INLET_1 float;
 #X text 12 135 OUTLET_0 list;
 #X text 12 5 KEYWORDS control list_op;
-#X restore 419 263 pd META;
-#X connect 2 0 6 0;
-#X connect 2 0 7 0;
-#X connect 4 0 7 1;
-#X connect 5 0 7 2;
-#X connect 6 0 7 0;
-#X connect 7 0 3 0;
-#X connect 8 0 2 0;
-#X connect 21 0 7 0;
+#X restore 499 564 pd META;
+#X obj 0 396 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 433 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 130 487 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 195 565 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty deltas 3 12 0 18 -204280 -1 0
+;
+#X obj 79 405 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 271 cnv 17 3 70 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 84 71 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 1 1
+;
+#X text 99 308 float;
+#X obj 84 49 loadbang;
+#X obj 84 90 metro 500;
+#X text 174 309 - input float stream;
+#X floatatom 196 102 5 0 0 0 - - -, f 5;
+#X obj 196 237 print deltas;
+#X floatatom 254 123 5 0 0 0 - - -, f 5;
+#X floatatom 313 123 5 0 0 0 - - -, f 5;
+#X text 313 102 b;
+#X text 252 103 a;
+#X msg 141 116 clear;
+#N canvas 635 477 450 300 counter 0;
+#X obj 91 26 inlet;
+#X obj 91 68 f;
+#X obj 127 68 + 1;
+#X msg 163 34 0;
+#X obj 91 218 outlet;
+#X floatatom 104 103 5 0 0 0 - - -, f 5;
+#X obj 91 140 t f f;
+#X obj 118 176 moses 10;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 0 5 0;
+#X connect 1 0 6 0;
+#X connect 2 0 1 1;
+#X connect 3 0 1 0;
+#X connect 6 0 4 0;
+#X connect 6 1 7 0;
+#X connect 7 1 3 0;
+#X restore 196 54 pd counter;
+#X text 11 21 generates vector with differences between last input
+and past inputs, f 71;
+#X obj 492 6 deltas;
+#X text 99 288 clear;
+#X text 99 270 bang;
+#X obj 79 351 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 374 cnv 17 3 17 empty empty 2 5 9 0 16 -228856 -162280 0
+;
+#X text 99 350 float;
+#X text 99 371 float;
+#X text 173 351 - lower bound of previous values (0 is current value)
+;
+#X text 174 372 - upper bound of previous values;
+#X obj 196 200 smlib/deltas 1 10 10;
+#X obj 196 122 t b f;
+#X text 174 454 - set initial lower bound;
+#X text 174 472 - set initial upper bound;
+#X text 174 490 - set initial buffer size;
+#X text 174 328 - set values for lower \, and upper bound and buffer
+size;
+#X text 99 327 set l u b;
+#N canvas 632 527 450 300 valueGenerator 0;
+#X obj 128 66 inlet;
+#X obj 162 129 *;
+#X obj 113 170 - 0;
+#X floatatom 132 213 5 0 0 0 - - -, f 5;
+#X obj 113 238 outlet;
+#X obj 128 96 t f f f f;
+#X obj 128 129 +;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 5 0 6 0;
+#X connect 5 1 6 1;
+#X connect 5 2 1 0;
+#X connect 5 3 1 1;
+#X connect 6 0 2 1;
+#X restore 196 78 pd valueGenerator;
+#X text 99 407 list;
+#X text 174 407 - deltas between lower and upper boundary;
+#X obj 0 511 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 82 454 a) float;
+#X text 82 472 b) float;
+#X text 82 490 c) float;
+#X text 81 531 The lower boundary (a) should be smaller than the upper
+boundary (b) \, which should be equal or smaller than the buffer size
+(c), f 65;
+#X text 174 290 - clear the buffer values;
+#X text 174 271 - calculates the set of deltas;
+#X connect 9 0 12 0;
+#X connect 11 0 9 0;
+#X connect 12 0 21 0;
+#X connect 14 0 33 0;
+#X connect 16 0 32 1;
+#X connect 17 0 32 2;
+#X connect 20 0 32 0;
+#X connect 21 0 39 0;
+#X connect 32 0 15 0;
+#X connect 33 0 32 0;
+#X connect 33 1 32 0;
+#X connect 39 0 14 0;

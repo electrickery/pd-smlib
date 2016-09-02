@@ -1,20 +1,194 @@
-#N canvas 1 53 400 214 10;
-#X text 192 79 j#|@2002;
-#X obj 214 59 SMLib-help;
-#X obj 15 57 vmtof;
-#X text 10 6 midi to frequency on a vector;
-#X msg 15 33 69 70 81;
-#X obj 15 80 print vmtof;
-#N canvas 145 227 494 344 META 0;
-#X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
+#N canvas 449 85 558 505 10;
+#X obj -1 626 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 290 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#N canvas 724 351 424 317 META 0;
+#X text 12 145 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
-#X text 12 105 AUTHOR Johannes Taelman (johannes.taelman@rug.ac.be)
+#X text 12 125 AUTHOR Johannes Taelman (johannes.taelman@rug.ac.be)
 ;
-#X text 12 65 INLET_0 list float;
-#X text 12 85 OUTLET_0 float list;
-#X text 12 5 KEYWORDS control list_op conversion MIDI;
-#X text 12 45 DESCRIPTION midi to frequency on a vector;
-#X restore 221 105 pd META;
-#X connect 2 0 5 0;
-#X connect 4 0 2 0;
+#X text 12 5 KEYWORDS control;
+#X text 12 45 DESCRIPTION trigger float from stream;
+#X text 12 65 INLET_0 float set;
+#X text 12 85 OUTLET_0 bang;
+#X text 12 105 OUTLET_1 bang;
+#X restore 499 628 pd META;
+#X obj 0 355 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 417 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 118 493 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X obj 4 26 threshold~;
+#X restore 195 629 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty vthreshold 3 12 0 18 -204280 -1
+0;
+#X obj 79 364 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 300 cnv 17 3 40 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 82 436 a) float;
+#X text 82 454 b) float;
+#X text 82 473 c) float;
+#X obj 133 263 print trigger;
+#X obj 277 263 print rest;
+#X obj 114 69 hsl 128 15 0 30 0 0 empty empty empty -2 -6 0 8 -262144
+-1 -1 1270 1;
+#X obj 258 263 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 111 263 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#N canvas 768 736 450 300 upDownCounter 0;
+#X obj 125 60 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 160 138 f;
+#X obj 189 138 + 1;
+#X msg 240 82 -1;
+#X msg 241 106 1;
+#X floatatom 106 216 5 0 0 0 - - -, f 5;
+#X obj 160 173 t f f f;
+#X obj 199 245 outlet;
+#X obj 160 98 metro 100;
+#X obj 160 41 inlet;
+#X obj 210 223 moses 2;
+#X obj 70 112 vsl 15 128 0 80 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 476 1;
+#X obj 205 200 moses 29;
+#X msg 301 112 29;
+#X msg 304 167 79;
+#X msg 302 140 59;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 up-down counter;
+#N canvas 254 711 450 300 updown 0;
+#X obj 125 60 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 160 138 f;
+#X obj 189 138 + 1;
+#X msg 240 82 -1;
+#X msg 241 106 1;
+#X floatatom 106 216 5 0 0 0 - - -, f 5;
+#X obj 187 245 outlet;
+#X obj 160 98 metro 100;
+#X obj 160 41 inlet;
+#X obj 70 112 vsl 15 128 0 80 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 160 211 smlib/threshold 60 0 0 0;
+#X msg 302 140 60 0 0 0;
+#X msg 304 167 80 0 0 0;
+#X msg 301 112 30 0 0 0;
+#X obj 160 244 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 301 246 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 213 57 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 up-down counter with threshold;
+#X obj 160 173 t f f;
+#X connect 0 0 7 0;
+#X connect 1 0 2 0;
+#X connect 1 0 5 0;
+#X connect 1 0 19 0;
+#X connect 2 0 1 1;
+#X connect 3 0 2 1;
+#X connect 4 0 2 1;
+#X connect 5 0 9 0;
+#X connect 7 0 1 0;
+#X connect 8 0 7 0;
+#X connect 10 0 14 0;
+#X connect 10 0 3 0;
+#X connect 10 1 15 0;
+#X connect 10 1 4 0;
+#X connect 11 0 10 0;
+#X connect 12 0 10 0;
+#X connect 13 0 10 0;
+#X connect 16 0 1 0;
+#X connect 19 0 10 0;
+#X connect 19 1 6 0;
+#X restore 286 259 pd updown with threshold;
+#X connect 0 0 8 0;
+#X connect 1 0 2 0;
+#X connect 1 0 5 0;
+#X connect 1 0 6 0;
+#X connect 2 0 1 1;
+#X connect 3 0 2 1;
+#X connect 4 0 2 1;
+#X connect 5 0 11 0;
+#X connect 6 0 10 0;
+#X connect 6 1 12 0;
+#X connect 6 2 7 0;
+#X connect 8 0 1 0;
+#X connect 9 0 8 0;
+#X connect 10 0 4 0;
+#X connect 12 1 3 0;
+#X connect 13 0 12 1;
+#X connect 14 0 12 1;
+#X connect 15 0 12 1;
+#X restore 111 48 pd upDownCounter;
+#X obj 89 50 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X text 99 298 float;
+#X text 174 299 - input value;
+#X text 99 316 set t d r d;
+#X text 174 317 - sets trigger threshold \, trigger debounce number
+\, rest threshold \, rest debounce number;
+#X obj 79 388 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 99 366 bang;
+#X text 174 366 - input float higher than trigger threshold;
+#X text 174 390 - input float lower than rest threshold;
+#X text 175 436 - trigger threshold;
+#X text 174 454 - trigger debounce number;
+#X text 174 473 - rest threshold;
+#X text 174 491 - rest debounce number;
+#X text 82 491 d) float;
+#X text 99 390 bang;
+#X obj 0 510 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 78 532 threshold monitors its input float stream and outputs
+bangs when the signal exceeds a specified "trigger" value \, and also
+when the input value recedes below a "rest" value. You can specify
+debounce in number of floats received \, for the threshold~ to wait
+after the two event types before triggering again.;
+#X text 11 23 trigger on upper and lower boundaries of float stream
+, f 71;
+#X obj 111 202 smlib/vthreshold 25 0 3 0;
+#X floatatom 111 88 5 0 0 0 - - -, f 5;
+#X obj 34 132 print;
+#X msg 231 117 set 25 0 3 0 4;
+#X msg 230 94 set 25 10 3 5 4;
+#N canvas 1 79 450 300 listvariator 0;
+#X obj 147 105 t f f f f;
+#X obj 198 131 + 10;
+#X obj 181 153 + 5;
+#X obj 164 176 + 2;
+#X obj 147 203 pack f f f f;
+#X obj 147 44 inlet;
+#X obj 147 264 outlet;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Variation in list;
+#X connect 0 0 4 0;
+#X connect 0 1 3 0;
+#X connect 0 2 2 0;
+#X connect 0 3 1 0;
+#X connect 1 0 4 3;
+#X connect 2 0 4 2;
+#X connect 3 0 4 1;
+#X connect 4 0 6 0;
+#X connect 5 0 0 0;
+#X restore 111 107 pd listvariator;
+#X obj 479 5 vthreshold;
+#X connect 14 0 37 0;
+#X connect 17 0 14 0;
+#X connect 18 0 17 0;
+#X connect 36 0 12 0;
+#X connect 36 0 16 0;
+#X connect 36 1 13 0;
+#X connect 36 1 15 0;
+#X connect 37 0 41 0;
+#X connect 39 0 36 0;
+#X connect 40 0 36 0;
+#X connect 41 0 36 0;
+#X connect 41 0 38 0;

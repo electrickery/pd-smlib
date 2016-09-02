@@ -1,26 +1,9 @@
-#N canvas 1 53 441 306 10;
-#X msg 132 78 1 2 1;
-#X msg 132 53 1 0 1;
-#X text 26 18 vvconv: convolution of 2 vectors;
-#X text 357 244 j#|@2002;
-#X msg 30 43 1;
-#X obj 48 130 vvconv;
-#X msg 331 80 1 2 1;
-#X msg 229 68 1 0 0;
-#X msg 331 55 1 0 1;
-#X msg 229 45 1;
-#X obj 247 132 vvconv -1 2 -1;
-#X msg 230 92 1 0 1 0 0 1;
-#X msg 31 90 1 0 1 0 0 1;
-#X text 177 178 arguments: convolution kernel;
-#X obj 377 225 SMLib-help;
-#X obj 48 154 print vvconv;
-#X obj 247 156 print vvconv;
-#X text 2 202 length of output is the sum of input lengths minus one
+#N canvas 447 86 558 505 10;
+#X obj -1 478 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 310 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#X msg 30 66 2 0 1;
-#X msg 132 103 1 0 2;
-#N canvas 170 224 494 344 META 0;
+#N canvas 722 352 424 317 META 0;
 #X text 12 145 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -31,17 +14,63 @@ Wilkes for Pd version 0.42.;
 #X text 12 45 DESCRIPTION convolution of 2 vectors;
 #X text 12 105 OUTLET_0 list;
 #X text 12 85 INLET_1 float;
-#X restore 377 270 pd META;
-#X connect 0 0 5 1;
-#X connect 1 0 5 1;
-#X connect 4 0 5 0;
-#X connect 5 0 15 0;
-#X connect 6 0 10 1;
-#X connect 7 0 10 0;
-#X connect 8 0 10 1;
-#X connect 9 0 10 0;
-#X connect 10 0 16 0;
-#X connect 11 0 10 0;
-#X connect 12 0 5 0;
-#X connect 18 0 5 0;
-#X connect 19 0 5 1;
+#X restore 499 480 pd META;
+#X obj 0 392 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 429 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 118 493 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X obj 4 26 threshold~;
+#X restore 195 481 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty vvconv 3 12 0 18 -204280 -1 0
+;
+#X obj 79 401 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 320 cnv 17 3 30 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 318 float;
+#X text 174 319 - input value;
+#X msg 190 76 1 2 1;
+#X msg 190 53 1 0 1;
+#X msg 87 53 1;
+#X msg 454 78 1 2 1;
+#X msg 303 78 1 0 0;
+#X msg 454 55 1 0 1;
+#X msg 303 55 1;
+#X msg 303 102 1 0 1 0 0 1;
+#X msg 87 100 1 0 1 0 0 1;
+#X msg 87 76 2 0 1;
+#X msg 190 101 1 0 2;
+#X obj 87 176 smlib/vvconv;
+#X obj 303 178 smlib/vvconv -1 2 -1;
+#X obj 87 251 print vvconv1;
+#X obj 303 253 print vvconv2;
+#X obj 496 5 vvconv;
+#X text 99 336 list;
+#X text 174 337 - list of floats;
+#X obj 79 356 cnv 17 3 30 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 99 354 float;
+#X text 174 355 - input value;
+#X text 99 372 list;
+#X text 174 373 - list of floats;
+#X text 99 403 list;
+#X text 174 403 - convolution of the two lists;
+#X text 99 443 list of floats \, the default for the right inlet list
+\, the convolution kernel;
+#X text 11 23 convolution of 2 vectors, f 71;
+#X connect 11 0 22 1;
+#X connect 12 0 22 1;
+#X connect 13 0 22 0;
+#X connect 14 0 23 1;
+#X connect 15 0 23 0;
+#X connect 16 0 23 1;
+#X connect 17 0 23 0;
+#X connect 18 0 23 0;
+#X connect 19 0 22 0;
+#X connect 20 0 22 0;
+#X connect 21 0 22 1;
+#X connect 22 0 24 0;
+#X connect 23 0 25 0;

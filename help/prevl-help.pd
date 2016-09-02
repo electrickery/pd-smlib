@@ -1,30 +1,9 @@
-#N canvas 1 53 489 300 10;
-#X text 364 181 j#|@2002;
-#X obj 386 159 SMLib-help;
-#X floatatom -12 16 5 0 0 0 - - -;
-#X floatatom 42 50 5 0 0 0 - - -;
-#X floatatom 94 49 5 0 0 0 - - -;
-#X obj -2 46 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj -12 -4 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X text -19 167 ...;
-#X text 127 79 [deltas a b c];
-#X text 94 28 b;
-#X text 40 29 a;
-#X text 126 125 requires a<b and b<=c;
-#X text 126 109 c = buffer size;
-#X text 9 -8 x(i);
-#X obj -14 107 print prevl;
-#X text -17 -54 prevl: generates vector with past input values (float)
+#N canvas 453 83 558 505 10;
+#X obj -1 468 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 290 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#X text -17 128 x(i-a);
-#X text -17 142 x(i-(a+1));
-#X text -17 156 x(i-(a+2));
-#X text -17 182 x(i-(b));
-#X obj -14 80 prevl 0 10 10;
-#X msg 71 2 clear;
-#N canvas 131 167 494 344 META 0;
+#N canvas 726 350 424 317 META 0;
 #X text 12 165 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -37,12 +16,76 @@ Wilkes for Pd version 0.42.;
 #X text 12 85 INLET_1 float;
 #X text 12 105 INLET_2 float;
 #X text 12 125 OUTLET_0 list;
-#X restore 395 212 pd META;
-#X connect 2 0 20 0;
-#X connect 2 0 5 0;
-#X connect 3 0 20 1;
-#X connect 4 0 20 2;
-#X connect 5 0 20 0;
-#X connect 6 0 2 0;
-#X connect 20 0 14 0;
+#X restore 499 470 pd META;
+#X obj 0 348 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 386 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 124 490 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X obj 4 26 smlib/lhist;
+#X restore 195 471 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty prevl 3 12 0 18 -204280 -1 0;
+#X obj 79 357 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 300 cnv 17 3 35 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 82 405 a) float;
+#X obj 86 266 print;
+#X text 174 319 - input float;
+#X text 99 318 float;
+#X text 99 298 clear;
+#X text 99 359 list;
+#X text 82 423 b) float;
+#X text 82 442 c) float;
+#X text 174 299 - reinitialize histogram bins;
+#X floatatom 86 51 5 0 0 0 - - -, f 5;
+#X obj 86 95 t b f;
+#X obj 86 196 smlib/prevl 0 10 10;
+#X msg 136 97 clear;
+#N canvas 752 458 450 300 upcounter 0;
+#X obj 71 51 inlet;
+#X obj 81 104 f;
+#X obj 111 103 + 1;
+#X obj 126 190 moses 10;
+#X obj 97 73 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 137 52 0;
+#X obj 81 190 outlet;
+#X obj 81 153 t f f;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 upcounter;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 0 7 0;
+#X connect 2 0 1 1;
+#X connect 3 1 5 0;
+#X connect 4 0 1 0;
+#X connect 5 0 1 1;
+#X connect 7 0 6 0;
+#X connect 7 1 3 0;
+#X restore 123 72 pd upcounter;
+#X obj 123 50 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 140 50 metro 500;
+#X floatatom 141 123 5 0 0 0 - - -, f 5;
+#X floatatom 197 124 5 0 0 0 - - -, f 5;
+#X obj 505 6 prevl;
+#X text 11 23 generates vector with past input values (float), f 71
+;
+#X text 174 359 - list of previous values;
+#X text 174 442 - buffer size;
+#X text 175 405 - value of first previous value from buffer (0 = current)
+;
+#X text 174 423 - value of last previous value from buffer;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
+#X connect 19 1 20 0;
+#X connect 20 0 10 0;
 #X connect 21 0 20 0;
+#X connect 22 0 19 0;
+#X connect 23 0 24 0;
+#X connect 24 0 22 0;
+#X connect 25 0 20 1;
+#X connect 26 0 20 2;

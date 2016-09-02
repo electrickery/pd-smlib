@@ -1,36 +1,9 @@
-#N canvas 1 53 414 422 10;
-#X text 328 352 j#|@2002;
-#X text 348 333 SMLib-help;
-#X text 14 7 hist: histograms;
-#X obj 2 354 print;
-#X obj 11 181 random 10;
-#X obj 11 162 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X msg 129 177 absolute;
-#X msg 129 205 relative;
-#X msg 276 177 clear;
-#X text 128 156 generate output;
-#X text 275 159 reinit;
-#X text 31 160 feed data;
-#X obj 2 317 hist 0 10 10;
-#X obj 62 347 vsum;
-#X floatatom 62 370 5 0 0 0 - - -;
-#X msg 11 208 1 3 5 7 9;
-#X text 14 50 - value of first class;
-#X text 14 77 - number of classes;
-#X text 14 64 - value of last class;
-#X text 13 35 arguments:;
-#X text 14 112 - array of samples in classes;
-#X text 12 97 output:;
-#X text 12 133 out-of-range inputs are clipped (cfr lhisti);
-#X msg 11 233 1.4 3.4 5.4 7.4 9.4;
-#X msg 87 292 -10;
-#X msg 11 259 0.6 2.6 4.6 6.6 8.6;
-#X obj 42 396 itov;
-#X text 4 399 cfr.;
-#X obj 79 396 lhist;
-#X obj 124 396 lhisti;
-#N canvas 247 140 494 344 META 0;
+#N canvas 457 81 558 505 10;
+#X obj -1 614 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 261 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#N canvas 734 346 424 317 META 0;
 #X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -40,16 +13,74 @@ Wilkes for Pd version 0.42.;
 #X text 12 5 KEYWORDS control;
 #X text 12 65 INLET_0 float list absolute relative clear;
 #X text 12 85 OUTLET_0 list;
-#X restore 355 378 pd META;
-#X connect 4 0 12 0;
-#X connect 5 0 4 0;
-#X connect 6 0 12 0;
-#X connect 7 0 12 0;
-#X connect 8 0 12 0;
-#X connect 12 0 3 0;
-#X connect 12 0 13 0;
-#X connect 13 0 14 0;
-#X connect 15 0 12 0;
-#X connect 23 0 12 0;
-#X connect 24 0 12 0;
-#X connect 25 0 12 0;
+#X restore 499 616 pd META;
+#X obj 0 412 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 449 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 130 487 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 195 617 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty hist 3 12 0 18 -204280 -1 0;
+#X obj 79 421 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 271 cnv 17 3 125 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 304 clear;
+#X text 99 423 list;
+#X obj 0 527 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
+0;
+#X text 82 470 a) float;
+#X text 82 488 b) float;
+#X text 82 506 c) float;
+#X text 174 306 - clear the buffer values;
+#X obj 98 227 print;
+#X msg 262 55 absolute;
+#X msg 262 77 relative;
+#X msg 264 115 clear;
+#X obj 158 220 vsum;
+#X floatatom 158 243 5 0 0 0 - - -, f 5;
+#X msg 98 54 1 3 5 7 9;
+#X msg 104 75 1.4 3.4 5.4 7.4 9.4;
+#X msg 183 155 -10;
+#X msg 109 96 0.6 2.6 4.6 6.6 8.6;
+#X obj 98 180 smlib/hist 0 10 10;
+#X obj 505 6 hist;
+#X text 99 270 absolute;
+#X text 99 340 list;
+#X text 99 358 relative;
+#X text 174 341 - input floats;
+#X obj 243 56 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 99 287 bang;
+#X text 174 423 - histogram values;
+#X text 174 359 - calculates relative histogram values;
+#X text 174 271 - calculates absolute histogram values;
+#X text 174 288 - calculates absolute histogram values;
+#X text 174 506 - set initial number of bins;
+#X text 174 470 - set initial lower scale value;
+#X text 174 488 - set initial upper scale value;
+#X text 11 21 histograms, f 71;
+#X msg 215 155 20;
+#X text 81 547 The lower boundary (a) should be smaller than the upper
+boundary (b) \, which should be equal or smaller than the buffer size
+(c). Out of range values are not ignored \, but put into the first
+and last bin., f 65;
+#X text 99 375 set l u b;
+#X text 174 376 - set lower (l) and upper (u) scale values and number
+of bins (b).;
+#X text 174 324 - input float;
+#X text 99 323 float;
+#X connect 17 0 26 0;
+#X connect 18 0 26 0;
+#X connect 19 0 26 0;
+#X connect 20 0 21 0;
+#X connect 22 0 26 0;
+#X connect 23 0 26 0;
+#X connect 24 0 26 0;
+#X connect 25 0 26 0;
+#X connect 26 0 16 0;
+#X connect 26 0 20 0;
+#X connect 32 0 26 0;
+#X connect 42 0 26 0;

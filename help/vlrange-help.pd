@@ -1,20 +1,62 @@
-#N canvas 1 53 400 214 10;
-#X text 296 140 j#|@2002;
-#X obj 318 120 SMLib-help;
-#X obj 15 57 vmtof;
-#X text 10 6 midi to frequency on a vector;
-#X msg 15 33 69 70 81;
-#X obj 15 80 print vmtof;
-#N canvas 185 223 494 344 META 0;
+#N canvas 445 87 558 505 10;
+#X obj -1 470 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 270 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#N canvas 706 360 424 317 META 0;
 #X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
 #X text 12 105 AUTHOR Johannes Taelman (johannes.taelman@rug.ac.be)
 ;
+#X text 12 65 INLET_0 list float;
 #X text 12 85 OUTLET_0 list float;
-#X text 12 45 DESCRIPTION midi to frequency on a vector;
-#X text 12 65 INLET_0 float list;
+#X text 12 45 DESCRIPTION frequency to midi on a vector;
 #X text 12 5 KEYWORDS control list_op conversion MIDI;
-#X restore 329 170 pd META;
-#X connect 2 0 5 0;
-#X connect 4 0 2 0;
+#X restore 499 472 pd META;
+#X obj 0 353 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 429 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 116 494 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 195 473 pd Related_objects;
+#X obj 79 283 cnv 17 3 35 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 281 float;
+#X text 99 305 list;
+#X obj 79 365 cnv 17 3 50 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 363 float;
+#X text 99 387 list;
+#X obj 0 1 cnv 15 552 40 empty empty vlrange 3 12 0 18 -204280 -1 0
+;
+#X msg 81 51 1 2 3 0;
+#X obj 81 155 smlib/vlrange 6;
+#X msg 87 70 0 0 0 0;
+#X msg 305 73 decay 4;
+#X msg 262 72 0;
+#X obj 81 245 print vlrange;
+#X obj 503 6 vlrange;
+#X msg 260 50 1;
+#X msg 144 51 1 2 4 8;
+#X msg 146 73 2 4 8 16;
+#X text 174 282 - input value;
+#X text 174 306 - list of input values;
+#X text 11 23 leaky maximum minus leaky minimum for a float list,
+f 71;
+#X text 174 364 - output value = leaky maximum - leaky minimum;
+#X text 174 388 - list of output values = leaky maximum - leaky minimum
+;
+#X text 87 450 the argument is the half-decay expressed in number of
+activations, f 66;
+#X connect 13 0 14 0;
+#X connect 14 0 18 0;
+#X connect 15 0 14 0;
+#X connect 16 0 14 0;
+#X connect 17 0 14 0;
+#X connect 20 0 14 0;
+#X connect 21 0 14 0;
+#X connect 22 0 14 0;
+#X coords 0 10100 20 10080 0 0 0;

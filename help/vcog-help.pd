@@ -1,18 +1,9 @@
-#N canvas 1 53 471 165 10;
-#X msg 18 40 1 2 3 4;
-#X floatatom 50 96 5 0 0 0 - - -;
-#X msg 84 40 3 4 5;
-#X text 387 99 j#|@2002;
-#X obj 409 77 SMLib-help;
-#X obj 52 69 vcog;
-#X text 16 14 vcog computes the center of gravity of a list of floats
+#N canvas 451 84 558 505 10;
+#X obj -1 465 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 305 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
-#X msg 134 40 0 1 0 1;
-#X msg 199 40 0 0 1 1;
-#X msg 263 40 8;
-#X msg 144 74 1 -1;
-#X text 142 94 zero sum causes no output;
-#N canvas 208 165 494 344 META 0;
+#N canvas 718 354 424 317 META 0;
 #X text 12 135 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -23,11 +14,46 @@ Wilkes for Pd version 0.42.;
 #X text 12 45 DESCRIPTION compute the center of gravity of a list of
 floats;
 #X text 12 95 OUTLET_0 float;
-#X restore 417 124 pd META;
-#X connect 0 0 5 0;
-#X connect 2 0 5 0;
-#X connect 5 0 1 0;
-#X connect 7 0 5 0;
-#X connect 8 0 5 0;
-#X connect 9 0 5 0;
-#X connect 10 0 5 0;
+#X restore 499 467 pd META;
+#X obj 0 372 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 434 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 116 494 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X restore 195 468 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty vcog 3 12 0 18 -204280 -1 0;
+#X obj 79 318 cnv 17 3 35 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 316 float;
+#X text 174 317 - input value;
+#X text 99 340 list;
+#X text 174 341 - list of input values;
+#X obj 79 386 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 99 384 float;
+#X msg 81 54 1 2 3 4;
+#X floatatom 81 248 5 0 0 0 - - -, f 5;
+#X msg 147 54 3 4 5;
+#X msg 198 74 0 0 1 1;
+#X msg 255 54 8;
+#X msg 294 54 1 -1;
+#X obj 81 165 smlib/vcog;
+#X text 11 23 vcog computes the center of gravity of a list of floats
+, f 71;
+#X obj 509 5 vcog;
+#X text 174 385 - the virtual position in the list where the sum of
+the values at the left it equals the sum at the right.;
+#X msg 86 74 4 3 2 1;
+#X msg 146 74 5 4 3;
+#X msg 197 54 1 1 0 0;
+#X connect 14 0 20 0;
+#X connect 16 0 20 0;
+#X connect 17 0 20 0;
+#X connect 18 0 20 0;
+#X connect 19 0 20 0;
+#X connect 20 0 15 0;
+#X connect 24 0 20 0;
+#X connect 25 0 20 0;
+#X connect 26 0 20 0;

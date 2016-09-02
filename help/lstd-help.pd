@@ -1,11 +1,9 @@
-#N canvas 1 53 441 199 10;
-#X text 347 135 j#|@2002;
-#X obj 369 113 SMLib-help;
-#X floatatom 74 115 5 0 0 0 - - -;
-#X obj 74 85 lstd;
-#X obj 77 47 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
-#N canvas 179 217 494 344 META 0;
+#N canvas 424 79 558 505 10;
+#X obj -1 468 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+0;
+#X obj 1 308 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
+;
+#N canvas 718 354 424 317 META 0;
 #X text 12 125 HELP_PATCH_AUTHORS "pd meta" information added by Jonathan
 Wilkes for Pd version 0.42.;
 #X text 12 25 LICENSE GPL v2;
@@ -15,6 +13,66 @@ Wilkes for Pd version 0.42.;
 ;
 #X text 12 45 DESCRIPTION leaky standard deviation;
 #X text 12 65 INLET_0 float;
-#X restore 385 157 pd META;
-#X connect 3 0 2 0;
-#X connect 4 0 3 0;
+#X restore 499 470 pd META;
+#X obj 0 384 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+;
+#X obj 0 422 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+0;
+#N canvas 124 490 428 85 Related_objects 0;
+#X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
+#X text 6 1 Related Objects;
+#X obj 4 26 smlib/lhist;
+#X restore 195 471 pd Related_objects;
+#X obj 0 0 cnv 15 552 40 empty empty lstd 3 12 0 18 -204280 -1 0;
+#X obj 79 393 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X obj 79 318 cnv 17 3 50 empty empty 0 5 9 0 16 -228856 -162280 0
+;
+#X text 82 441 a) float;
+#X text 99 317 clear;
+#X text 99 395 float;
+#X text 99 355 float;
+#X text 99 336 decay;
+#X text 174 395 - output value;
+#X text 173 356 - input value;
+#X text 174 318 - clear accumulator;
+#X text 174 337 - sets the half-decay time;
+#X text 174 441 - initial half-decay value (in number of activations)
+;
+#X floatatom 128 275 8 0 0 0 - - -, f 8;
+#X obj 131 53 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 2900 1;
+#X obj 154 76 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 6100 1;
+#X obj 151 122 * 2;
+#X obj 304 73 metro 500;
+#X obj 304 53 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 304 154 * 5;
+#X obj 304 94 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 151 99 t f f;
+#X obj 341 52 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 8900 1;
+#X obj 304 113 * 2;
+#X obj 304 133 - 1;
+#X obj 128 217 smlib/lstd 1;
+#X obj 510 6 lstd;
+#X text 12 23 leaky standard deviation, f 71;
+#X floatatom 87 217 5 0 0 0 - - -, f 5;
+#X connect 20 0 31 0;
+#X connect 20 0 34 0;
+#X connect 21 0 27 0;
+#X connect 22 0 31 0;
+#X connect 22 0 34 0;
+#X connect 23 0 26 0;
+#X connect 24 0 23 0;
+#X connect 25 0 31 0;
+#X connect 25 0 34 0;
+#X connect 26 0 29 0;
+#X connect 27 0 22 0;
+#X connect 27 1 22 1;
+#X connect 28 0 25 1;
+#X connect 29 0 30 0;
+#X connect 30 0 25 0;
+#X connect 31 0 19 0;
