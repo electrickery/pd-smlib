@@ -97,7 +97,7 @@ vector stream processing (vector output) (context)
 
 3. Installation
 ---------------
-
+** Outdated **
 Requires PD on the win32 platform (for now). Put SMLib.dll in a directory in
 your PD path. Put the help patches in pd\doc\5.reference.  
 
@@ -105,7 +105,7 @@ Start PD with "-lib SMLib"
 
 4. Getting started
 ------------------
-
+** Outdated **
 Start PD. 
 
 Create a new patch.
@@ -122,6 +122,5 @@ example patches for design ideas.
 -------------
 
 PD headquarters:
-http://crca.ucsd.edu/~msp/software.html
-http://iem.kug.ac.at/pd/
+http://msp.ucsd.edu/software.html
 http://www.puredata.info

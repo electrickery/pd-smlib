@@ -10,7 +10,7 @@ bp          second order (resonant) high-pass filter
 hist        histogram
 lhist       leaky histogram, clips samples
 lhisti      leaky histogram, ignore samples outside bins
-itov        bin index to value (for the histograms
+itov        bin index to value (for the histograms (incomplete)
 prevl       previous floats in a list
 deltas      difference between last float and previous floats
 vsum        sum of vector elements
