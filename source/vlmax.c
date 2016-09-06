@@ -28,7 +28,6 @@ static void vlmax_perform(t_vlmax *x, t_symbol *s, int argc, t_atom *argv)
 
 	if (argc!=x->m_n)
 	{
-		int i;
 		if (x->m_max)
 			freebytes(x->m_max,x->m_n);
 		x->m_max=(t_float*)getbytes(argc*sizeof(t_float));
@@ -50,10 +49,12 @@ static void vlmax_perform(t_vlmax *x, t_symbol *s, int argc, t_atom *argv)
 	}
 	outlet_list(x->x_obj.ob_outlet,gensym("list"),argc,ap);
     freebytes(ap,argc);
+    if (s) {} // prevent compiler complaint
 }
 
 static void vlmax_setHalfDecay(t_vlmax *x, t_floatarg halfDecayTime)
 {
+	if (halfDecayTime <= 1.) halfDecayTime = 1;
 	x->m_c_leak=(t_float)powf(.5,(1.0/halfDecayTime));
 	x->m_leak=1.0-x->m_c_leak;
 }

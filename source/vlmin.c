@@ -28,7 +28,6 @@ static void vlmin_perform(t_vlmin *x, t_symbol *s, int argc, t_atom *argv)
 
 	if (argc!=x->m_n)
 	{
-		int i;
 		if (x->m_min)
 			freebytes(x->m_min,x->m_n);
 		x->m_min=(t_float*)getbytes(argc*sizeof(t_float));
@@ -50,10 +49,12 @@ static void vlmin_perform(t_vlmin *x, t_symbol *s, int argc, t_atom *argv)
 	}
 	outlet_list(x->x_obj.ob_outlet,gensym("list"),argc,ap);
     freebytes(ap,argc);
+    if (s) {} // prevent compiler complaint
 }
 
 static void vlmin_setHalfDecay(t_vlmin *x, t_floatarg halfDecayTime)
 {
+	if (halfDecayTime <= 1.) halfDecayTime = 1;
 	x->m_c_leak=(t_float)powf(.5,(1.0/halfDecayTime));
 	x->m_leak=1.0-x->m_c_leak;
 }
