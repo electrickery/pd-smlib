@@ -56,5 +56,6 @@ void lstd_setup(void)
     class_addfloat(lstd_class, (t_method)lstd_perform);
 	class_addmethod(lstd_class, (t_method)lstd_setHalfDecay,
     	gensym("decay"), A_DEFFLOAT, NULL);
-}
+	class_addmethod(lstd_class, (t_method)lstd_clear,
+    	gensym("clear"), A_DEFFLOAT, NULL);}
 

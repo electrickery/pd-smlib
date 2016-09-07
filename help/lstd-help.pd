@@ -1,4 +1,4 @@
-#N canvas 424 79 558 505 10;
+#N canvas 422 80 558 505 10;
 #X obj -1 468 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
 0;
 #X obj 1 308 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
@@ -41,25 +41,26 @@ Wilkes for Pd version 0.42.;
 ;
 #X floatatom 128 275 8 0 0 0 - - -, f 8;
 #X obj 131 53 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 2900 1;
+-1 -1 5600 1;
 #X obj 154 76 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 6100 1;
+-1 -1 6800 1;
 #X obj 151 122 * 2;
 #X obj 304 73 metro 500;
 #X obj 304 53 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 304 154 * 5;
-#X obj 304 94 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 304 94 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 151 99 t f f;
 #X obj 341 52 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 8900 1;
+-1 -1 0 1;
 #X obj 304 113 * 2;
 #X obj 304 133 - 1;
 #X obj 128 217 smlib/lstd 1;
 #X obj 510 6 lstd;
 #X text 12 23 leaky standard deviation, f 71;
 #X floatatom 87 217 5 0 0 0 - - -, f 5;
+#X msg 223 100 clear;
 #X connect 20 0 31 0;
 #X connect 20 0 34 0;
 #X connect 21 0 27 0;
@@ -76,3 +77,4 @@ Wilkes for Pd version 0.42.;
 #X connect 29 0 30 0;
 #X connect 30 0 25 0;
 #X connect 31 0 19 0;
+#X connect 35 0 31 0;
