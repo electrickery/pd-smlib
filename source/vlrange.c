@@ -29,7 +29,6 @@ static void vlrange_perform(t_vlrange *x, t_symbol *s, int argc, t_atom *argv)
 
 	if (argc!=x->m_n)
 	{
-		int i;
 		if (x->m_min)
 		{
 			freebytes(x->m_min,x->m_n);
@@ -61,12 +60,30 @@ static void vlrange_perform(t_vlrange *x, t_symbol *s, int argc, t_atom *argv)
 	}
 	outlet_list(x->x_obj.ob_outlet,gensym("list"),argc,ap);
     freebytes(ap,argc);
+    if (s) {} // prevent compiler complaint
 }
 
 static void vlrange_setHalfDecay(t_vlrange *x, t_floatarg halfDecayTime)
 {
 	x->m_c_leak=(t_float)powf(.5,(1.0/halfDecayTime));
 	x->m_leak=1.0f-x->m_c_leak;
+}
+
+static void vlrange_status(t_vlrange *x)
+{
+    post("--==## vlrange status ##==--");
+    int i;
+    int n = x->m_n;
+    t_float *fmin = x->m_min;
+    t_float *fmax = x->m_max;
+    post("m_c_leak: %f",    x->m_c_leak);
+    post("m_leak: %f",      x->m_leak);
+    post("m_n:   %d",       x->m_n);
+    post("fmax - fmin");
+    for (i = 0; i < n; i++)
+    {
+        post("fmax: %f, fmin: %f", *fmax++, *fmin++);
+    }
 }
 
 static void *vlrange_new(t_float halfDecayTime)
@@ -93,6 +110,8 @@ void vlrange_setup(void)
 		sizeof(t_vlrange), 
 		CLASS_DEFAULT,
 	    A_DEFFLOAT, 0);
+	class_addmethod(vlrange_class, (t_method)vlrange_status,
+    	gensym("status"), A_DEFFLOAT, NULL);
 	class_addmethod(vlrange_class, (t_method)vlrange_setHalfDecay,
     	gensym("decay"), A_DEFFLOAT, NULL);
     class_addlist(vlrange_class, (t_method)vlrange_perform);

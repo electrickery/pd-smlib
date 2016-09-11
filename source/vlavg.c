@@ -28,7 +28,6 @@ static void vlavg_perform(t_vlavg *x, t_symbol *s, int argc, t_atom *argv)
 
 	if (argc!=x->m_n)
 	{
-		int i;
 		if (x->m_avg)
 			freebytes(x->m_avg,x->m_n);
 		x->m_avg=(t_float*)getbytes(argc*sizeof(t_float));
@@ -50,6 +49,7 @@ static void vlavg_perform(t_vlavg *x, t_symbol *s, int argc, t_atom *argv)
 	}
 	outlet_list(x->x_obj.ob_outlet,gensym("list"),argc,ap);
     freebytes(ap,argc);
+    if (s) {} // prevent compiler complaint
 }
 
 static void vlavg_setHalfDecay(t_vlavg *x, t_floatarg halfDecayTime)

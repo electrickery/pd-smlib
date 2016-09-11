@@ -22,9 +22,10 @@ static void vcog_perform(t_vcog *x, t_symbol *s, int argc, t_atom *argv)
 		wsum+= tmp*i;
 	}
 	if (sum!=0.0f) outlet_float(x->x_obj.ob_outlet, 1.0+(wsum/sum));
+    if (s) {} // prevent compiler complaint
 }
 
-static void *vcog_new( t_float halfDecayTime)
+static void *vcog_new()
 {
 	t_vcog *x=(t_vcog *)pd_new(vcog_class);
 	outlet_new(&x->x_obj, gensym("float"));

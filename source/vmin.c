@@ -17,7 +17,7 @@ typedef struct _vmin
 static void vmin_perform(t_vmin *x, t_symbol *s, int argc, t_atom *argv)
 {
 	int i;
-	int mini;
+	int mini = 0;
 	t_float min=MAXFLOAT;
 	for (i = 0; i < argc; i++)
 	{
@@ -30,9 +30,10 @@ static void vmin_perform(t_vmin *x, t_symbol *s, int argc, t_atom *argv)
 	}
 	outlet_float(x->x_obj.ob_outlet, min);
 	outlet_float(x->m_out_maxi, (t_float)(mini+1));
+    if (s) {} // prevent compiler complaint
 }
 
-static void *vmin_new( t_float halfDecayTime)
+static void *vmin_new()
 {
 	t_vmin *x=(t_vmin *)pd_new(vmin_class);
 	outlet_new(&x->x_obj, gensym("float"));

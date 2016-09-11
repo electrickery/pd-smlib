@@ -8,8 +8,6 @@ static t_class *vdelta_class;
 typedef struct _vdelta
 {
     t_object x_obj;
-	t_float m_c_leak;
-	t_float m_leak;
 	t_float *m_prev;
 	int m_n;
 } t_vdelta;
@@ -20,14 +18,9 @@ static void vdelta_perform(t_vdelta *x, t_symbol *s, int argc, t_atom *argv)
 	int i;
 	t_atom *ap,*app;
 	t_float *fp;
-	t_float m_leak;
-	t_float m_c_leak;
-	m_leak=x->m_leak;
-	m_c_leak=x->m_c_leak;
 
 	if (argc!=x->m_n)
 	{
-		int i;
 		if (x->m_prev)
 			freebytes(x->m_prev,x->m_n);
 		x->m_prev=(t_float*)getbytes(argc*sizeof(t_float));
@@ -48,6 +41,7 @@ static void vdelta_perform(t_vdelta *x, t_symbol *s, int argc, t_atom *argv)
 	}
 	outlet_list(x->x_obj.ob_outlet,gensym("list"),argc,ap);
     freebytes(ap,argc);
+    if (s) {} // prevent compiler complaint
 }
 
 static void *vdelta_new()

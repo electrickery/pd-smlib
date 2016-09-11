@@ -85,11 +85,26 @@ static void vthreshold_perform(t_vthreshold *x, t_symbol *s, int argc, t_atom *a
 	}
 }
 
+static void vthreshold_status(t_vthreshold *x)
+{
+    post("--==## vthreshold status ##==--");
+    int *state = x->x_state;
+    int i;
+    for (i = 0; i < x->x_n; i++) {
+        post("*%d x_state: %d", i, *state++);
+    }
+	post("int x_n: %d", x->x_n);
+    post("x_hithresh: %f", x->x_hithresh);	  
+    post("x_lothresh: %f", x->x_lothresh);	   
+    post("x_hideadtime: %f", x->x_hideadtime);	
+    post("x_lodeadtime: %f", x->x_lodeadtime);	
+}
 
-static void vthreshold_ff(t_vthreshold *x)
+
+/* static void vthreshold_ff(t_vthreshold *x)
 {
     freebytes(x->x_state,x->x_n);
-}
+} */
 
 void vthreshold_setup( void)
 {
@@ -101,6 +116,8 @@ void vthreshold_setup( void)
     class_addlist(vthreshold_class, (t_method)vthreshold_perform);   
 	class_addmethod(vthreshold_class, (t_method)vthreshold_set,
     	gensym("set"), A_FLOAT, A_FLOAT, A_FLOAT, A_FLOAT, A_FLOAT, 0);
+    class_addmethod(vthreshold_class, (t_method)vthreshold_status,
+    	gensym("status"), 0);
 //    class_addmethod(vthreshold_class, (t_method)vthreshold_ft1,
 //    	gensym("ft1"), A_FLOAT, 0);
 }

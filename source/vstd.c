@@ -24,9 +24,10 @@ static void vstd_perform(t_vstd *x, t_symbol *s, int argc, t_atom *argv)
 	sumsq/=argc;
 	sum/=argc;
 	outlet_float(x->x_obj.ob_outlet, (t_float)sqrtf(sumsq-sum*sum));
+    if (s) {} // prevent compiler complaint
 }
 
-static void *vstd_new( t_float halfDecayTime)
+static void *vstd_new()
 {
 	t_vstd *x=(t_vstd *)pd_new(vstd_class);
 	outlet_new(&x->x_obj, gensym("float"));

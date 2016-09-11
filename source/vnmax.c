@@ -20,7 +20,7 @@ typedef struct _vnmax
 static void vnmax_perform(t_vnmax *x, t_symbol *s, int argc, t_atom *argv)
 {
 	int i;
-	int maxi;
+	int maxi = 0;
 	t_float max=-MAXFLOAT;
 	for (i = 0; i < argc; i++)
 	{
@@ -33,9 +33,10 @@ static void vnmax_perform(t_vnmax *x, t_symbol *s, int argc, t_atom *argv)
 	}
 	outlet_float(x->x_obj.ob_outlet, max);
 	outlet_float(x->m_out_maxi, (t_float)(maxi+1));
+    if (s) {} // prevent compiler complaint
 }
 
-static void *vnmax_new( t_float halfDecayTime)
+static void *vnmax_new()
 {
 	t_vnmax *x=(t_vnmax *)pd_new(vnmax_class);
 	outlet_new(&x->x_obj, gensym("list"));

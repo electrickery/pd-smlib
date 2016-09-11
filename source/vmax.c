@@ -17,7 +17,7 @@ typedef struct _vmax
 static void vmax_perform(t_vmax *x, t_symbol *s, int argc, t_atom *argv)
 {
 	int i;
-	int maxi;
+	int maxi = 0;
 	t_float max=-MAXFLOAT;
 	for (i = 0; i < argc; i++)
 	{
@@ -30,9 +30,10 @@ static void vmax_perform(t_vmax *x, t_symbol *s, int argc, t_atom *argv)
 	}
 	outlet_float(x->x_obj.ob_outlet, max);
 	outlet_float(x->m_out_maxi, (t_float)(maxi+1));
+	if (s) {} // prevent compiler complaint
 }
 
-static void *vmax_new( t_float halfDecayTime)
+static void *vmax_new()
 {
 	t_vmax *x=(t_vmax *)pd_new(vmax_class);
 	outlet_new(&x->x_obj, gensym("float"));

@@ -31,11 +31,10 @@ static void itov_perform_float(t_itov *x, t_float j)
 
 }
 
-static void itov_perform_list(t_itov *x, t_symbol *s, int argc, t_atom *argv)
-{
-
-
-}
+//static void itov_perform_list(t_itov *x, t_symbol *s, int argc, t_atom *argv)
+//{
+//
+//}
 
 static void itov_set(t_itov *x, t_float lo, t_float hi, t_float nbins)
 {
@@ -69,14 +68,14 @@ static void *itov_new(t_float lo, t_float hi, t_float nbins)
 	return (void *)x;
 }
 
-static void itov_free(t_itov *x)
-{
-}
+//static void itov_free(t_itov *x)
+//{
+//}
 
 void itov_setup(void)
 {
     itov_class = class_new(gensym("itov"),
-    	(t_newmethod)itov_new, (t_method)itov_free,
+    	(t_newmethod)itov_new, 0,
 		sizeof(t_itov), 
 		CLASS_DEFAULT,
 	    A_DEFFLOAT, A_DEFFLOAT, A_DEFFLOAT,0);
