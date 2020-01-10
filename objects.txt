@@ -1,38 +1,40 @@
-lavg        leaky average
-lmax        leaky maximum
-lmin        leaky minimum
-lrange      leaky range
-lstd        leaky standard deviation
-decimator   passes 1 in n input values
-threshold   detection with hysteresis
-hip         first order high-pass filter
-bp          second order (resonant) high-pass filter
-hist        histogram
-lhist       leaky histogram, clips samples
-lhisti      leaky histogram, ignore samples outside bins
-itov        bin index to value (for the histograms (incomplete)
-prevl       previous floats in a list
-deltas      difference between last float and previous floats
-vsum        sum of vector elements
-vcog        center of gravity
-vmax        maximum and its location
-vmin        minimum and its location
-vrms        root mean square
-vstd        standard deviation
-vv+         vector addition
-vv-         vector substraction
-vvconv      vector convolution
-vclip       clip elements
-vfmod       floating point modulo
-vpow        power
-vthreshold  detections with hysteresises
-vftom       frequency to midi
-vmtof       midi to frequency
-vdbtorms    dB to rms
-vrmstodb    rms to dB
-linspace    linearly spaced vector
-vlavg       leaky averages
-vlmax       leaky maxima
-vlmin       leaky minima
-vlrange     leaky ranges
-vdelta      difference between successive vectors
+bp           bandpass filter on float stream
+decimator    reduces the number of floats in a stream
+deltas       generates vector with differences between last input and past inputs
+hip          highpass filter on float stream
+hist         histograms
+itov         index to value
+lavg         leaky average
+lhist        "leaky" histograms
+lhisti       "leaky" histograms without clipping the input
+linspace     generates a vector with linear spaced floats
+lmax         leaky maximum
+lmin         leaky minimum
+lrange       leaky maximum minus leaky minimum
+lstd         leaky standard deviation
+prevl        generates vector with past input values (float)
+threshold    trigger on upper and lower boundaries of float stream
+vabs         absolute values of a list of floats
+vclip        clips each element in a vector
+vcog         vcog computes the center of gravity of a list of floats
+vdbtorms     db to rms on a vector
+vdelta       vdelta: difference between consecutive vectors
+vfmod        vfmod computes the modulo of each element in a vector
+vftom        frequency to midi on a vector
+vlavg        vector leaky average
+vlmax        vector leaky maximum
+vlmin        vector leaky minimum
+vlrange      leaky maximum minus leaky minimum for a float list
+vmax         finds the maximum and its location in the list
+vmin         finds the minimum and its location in the list
+vmtof        midi to frequency on a vector
+vnmax        maximum n values in a list of float and their locations (indices)
+vpow         vpow computes y(i)=x(i)^a
+vrms         vrms computes the root-mean-square of a vector
+vrmstodb     rms to db on a vector
+vstd         vstd computes the standard deviation of a vector
+vsum         vsum computes the sum of a list of floats
+vthreshold   trigger on upper and lower boundaries of float stream
+vvconv       convolution of 2 vectors
+vvminus      substracts two lists of floats or a float from a list of floats
+vvplus       adds two lists of floats or a float from a list of floats
