@@ -16,4 +16,4 @@ See the original README.txt for more information. The current version is 0.12.3.
 For bugs found in this version, please report them to me. Johannes is 
 not responsible for bugs introduced by me.
 
-Fred Jan Kraan fjkraan@electrickery.nl 2016-09-02
+Fred Jan Kraan fjkraan@electrickery.nl 2022-12-08
