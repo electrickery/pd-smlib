@@ -4,8 +4,9 @@
 #X text 10 30 NAME smlib;
 #X text 10 50 AUTHOR Johannes Taelman <johannes.taelman@rug.ac.be>
 ;
-#X text 10 70 LICENSE GNU GPL;
-#X text 10 90 DESCRIPTION vector processing \, vector analysis \, vector
+#X text 10 70 MAINTAINER Fred Jan Kraan <fjkraan@electrickery.nl>;
+#X text 10 90 LICENSE GNU GPL;
+#X text 10 110 DESCRIPTION vector processing \, vector analysis \, vector
 synthesis \, number stream analysis \, number stream filters;
-#X text 10 130 VERSION 0.12.3;
+#X text 10 130 VERSION 0.13.0;
 #X restore 10 10 pd META;
