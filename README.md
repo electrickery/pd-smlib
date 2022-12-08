@@ -11,7 +11,7 @@ to simplify creation of a deken package of the libary.
 Additionally, the help-patches are reformatted.
 
 
-See the original README.txt for more information. The current version is 0.12.3.
+See the original README.txt for more information. The current version is 0.13.0.
 
 For bugs found in this version, please report them to me. Johannes is 
 not responsible for bugs introduced by me.
